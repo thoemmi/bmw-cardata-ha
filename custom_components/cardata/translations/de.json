@@ -90,5 +90,1853 @@
       "reauth_failed": "Die erneute Autorisierung konnte nicht gestartet werden. Versuchen Sie es erneut über die Integrationsoptionen.",
       "unknown": "Unerwarteter Fehler"
     }
+  },
+  "entity": {
+    "sensor": {
+      "vehicle_vehicle_antitheftalarmsystem_alarm_activationtime": {
+        "name": "Zeitpunkt der Alarmauslösung"
+      },
+      "vehicle_vehicle_antitheftalarmsystem_alarm_armstatus": {
+        "name": "Scharfschaltungsstatus der Alarmanlage"
+      },
+      "vehicle_vehicle_antitheftalarmsystem_alarm_ison": {
+        "name": "Alarm aktiv"
+      },
+      "vehicle_electricalsystem_battery_servicedemand_recharge": {
+        "name": "12-V-Batterie muss geladen werden"
+      },
+      "vehicle_electricalsystem_battery_servicedemand_replace": {
+        "name": "Batteriezustand"
+      },
+      "vehicle_electricalsystem_battery_stateofcharge": {
+        "name": "Ladezustand (12 V)"
+      },
+      "vehicle_electricalsystem_battery_stateofchargeplausibility": {
+        "name": "Plausibilität des Ladezustands (12 V)"
+      },
+      "vehicle_electricalsystem_battery_voltage": {
+        "name": "Batteriespannung (12 V)"
+      },
+      "vehicle_electricalsystem_battery48v_stateofhealth_displayed": {
+        "name": "Batteriezustand (48 V)"
+      },
+      "vehicle_powertrain_electric_battery_bidirectionalcharging_availability": {
+        "name": "Hochvoltbatterie – bidirektionales Laden verfügbar"
+      },
+      "vehicle_powertrain_electric_battery_charging_aclimit_isactive": {
+        "name": "Hochvoltbatterie – Ladebegrenzung aktiv"
+      },
+      "vehicle_powertrain_electric_battery_charging_aclimit_max": {
+        "name": "Hochvoltbatterie – maximaler Ladestrom"
+      },
+      "vehicle_powertrain_electric_battery_charging_aclimit_min": {
+        "name": "Hochvoltbatterie – minimaler Ladestrom"
+      },
+      "vehicle_powertrain_electric_battery_charging_aclimit_selected": {
+        "name": "Hochvoltbatterie – Ladestrombegrenzung"
+      },
+      "vehicle_powertrain_electric_battery_charging_acousticlimit": {
+        "name": "Hochvoltbatterie – Akustische Ladebegrenzung"
+      },
+      "vehicle_powertrain_electric_battery_charging_batterycarepersisted_isactive": {
+        "name": "Hochvoltbatterie – Batteriepflege aktiv"
+      },
+      "vehicle_powertrain_electric_battery_charging_batterycarepersisted_ispreservingchargingmode": {
+        "name": "Hochvoltbatterie – Batteriepflegemodus"
+      },
+      "vehicle_powertrain_electric_battery_charging_batterycarepersisted_isreducedtargetsoe": {
+        "name": "Hochvoltbatterie – reduzierter Energiezielwert"
+      },
+      "vehicle_powertrain_electric_battery_charging_cablecheckvoltage": {
+        "name": "Hochvoltbatterie – Spannung der Kabelprüfung"
+      },
+      "vehicle_powertrain_electric_battery_charging_dcchargingmodeactive": {
+        "name": "Hochvoltbatterie – DC-Lademodus"
+      },
+      "vehicle_powertrain_electric_battery_charging_history_sessionslist": {
+        "name": "Hochvoltbatterie – Ladeverlauf"
+      },
+      "vehicle_powertrain_electric_battery_charging_power": {
+        "name": "Hochvoltbatterie – Ladeleistung"
+      },
+      "vehicle_powertrain_electric_battery_charging_preferencesmartcharging": {
+        "name": "Hochvoltbatterie – Intelligentes Laden"
+      },
+      "vehicle_powertrain_electric_battery_charging_settingslist": {
+        "name": "Hochvoltbatterie – Standortabhängige Ladeeinstellungen"
+      },
+      "vehicle_powertrain_electric_battery_preconditioning_automaticmode_statusfeedback": {
+        "name": "Hochvoltbatterie – Status der automatischen Vorkonditionierung"
+      },
+      "vehicle_powertrain_electric_battery_preconditioning_manualmode_statusfeedback": {
+        "name": "Hochvoltbatterie – Status der manuellen Vorkonditionierung"
+      },
+      "vehicle_powertrain_electric_battery_preconditioning_state": {
+        "name": "Status der Vorkonditionierung der Hochvoltbatterie"
+      },
+      "vehicle_powertrain_electric_battery_stateofcharge_displayed": {
+        "name": "Hochvoltbatterie – Ladezustand"
+      },
+      "vehicle_powertrain_electric_battery_stateofcharge_target": {
+        "name": "Hochvoltbatterie – Ladeziel"
+      },
+      "vehicle_powertrain_electric_battery_stateofcharge_targetmin": {
+        "name": "Hochvoltbatterie – Ladeziel (min)"
+      },
+      "vehicle_powertrain_electric_battery_stateofcharge_targetsocforprofessionalmode": {
+        "name": "Hochvoltbatterie – Ladeziel (Profi-Modus)"
+      },
+      "vehicle_powertrain_electric_battery_stateofhealth_displayed": {
+        "name": "Hochvoltbatterie – Batteriezustand (SOCE)"
+      },
+      "vehicle_drivetrain_batterymanagement_batterysizemax": {
+        "name": "Hochvoltbatterie – maximale Größe"
+      },
+      "vehicle_drivetrain_batterymanagement_header": {
+        "name": "Hochvoltbatterie – Ladezustand (Batteriemanagement)"
+      },
+      "vehicle_drivetrain_batterymanagement_maxenergy": {
+        "name": "Hochvoltbatterie – Energieinhalt"
+      },
+      "vehicle_drivetrain_electricengine_charging_acampere": {
+        "name": "Laden – AC-Ladestrom"
+      },
+      "vehicle_drivetrain_electricengine_charging_acrestriction_factor": {
+        "name": "Laden – AC-Begrenzungsfaktor"
+      },
+      "vehicle_drivetrain_electricengine_charging_acrestriction_ischosen": {
+        "name": "Laden – AC-Begrenzung ausgewählt"
+      },
+      "vehicle_drivetrain_electricengine_charging_acvoltage": {
+        "name": "Laden – AC-Ladespannung"
+      },
+      "vehicle_drivetrain_electricengine_charging_authentication_status": {
+        "name": "Laden – Authentifizierungsstatus"
+      },
+      "vehicle_drivetrain_electricengine_charging_chargingmode": {
+        "name": "Laden – Lademodus"
+      },
+      "vehicle_drivetrain_electricengine_charging_connectiontype": {
+        "name": "Laden – Ladeanschlusstyp"
+      },
+      "vehicle_drivetrain_electricengine_charging_connectorstatus": {
+        "name": "Laden – Status des Ladesteckers"
+      },
+      "vehicle_drivetrain_electricengine_charging_consumptionoverlifetime_engineoff_gridenergy": {
+        "name": "Laden – Bezogene Energie (Motor aus)"
+      },
+      "vehicle_drivetrain_electricengine_charging_consumptionoverlifetime_engineoff_referencedistance": {
+        "name": "Laden – Referenzstrecke (Motor aus)"
+      },
+      "vehicle_drivetrain_electricengine_charging_consumptionoverlifetime_engineon_gridenergy": {
+        "name": "Laden – Bezogene Energie (Motor an)"
+      },
+      "vehicle_drivetrain_electricengine_charging_consumptionoverlifetime_engineon_referencedistance": {
+        "name": "Laden – Referenzstrecke (Motor an)"
+      },
+      "vehicle_drivetrain_electricengine_charging_consumptionoverlifetime_overall_gridenergy": {
+        "name": "Laden – Bezogene Energie insgesamt"
+      },
+      "vehicle_drivetrain_electricengine_charging_consumptionoverlifetime_overall_referencedistance": {
+        "name": "Laden – Referenzstrecke insgesamt"
+      },
+      "vehicle_drivetrain_electricengine_charging_hvpmfinishreason": {
+        "name": "Laden – Grund des Ladeendes"
+      },
+      "vehicle_drivetrain_electricengine_charging_hvstatus": {
+        "name": "Laden – Status des Hochvoltsystems"
+      },
+      "vehicle_drivetrain_electricengine_charging_isimmediatechargingsystemreason": {
+        "name": "Laden – Grund für sofortiges Laden"
+      },
+      "vehicle_drivetrain_electricengine_charging_issingleimmediatecharging": {
+        "name": "Laden – Status des sofortigen Ladens"
+      },
+      "vehicle_drivetrain_electricengine_charging_lastchargingreason": {
+        "name": "Laden – Grund des letzten Ladevorgangs"
+      },
+      "vehicle_drivetrain_electricengine_charging_lastchargingresult": {
+        "name": "Laden – Ergebnis des letzten Ladevorgangs"
+      },
+      "vehicle_drivetrain_electricengine_charging_level": {
+        "name": "Laden – Prognostizierter Ladezustand"
+      },
+      "vehicle_drivetrain_electricengine_charging_method": {
+        "name": "Laden – Lademethode"
+      },
+      "vehicle_drivetrain_electricengine_charging_modedeviation": {
+        "name": "Laden – Abweichung vom Lademodus"
+      },
+      "vehicle_drivetrain_electricengine_charging_phasenumber": {
+        "name": "Laden – Ladephasen"
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_climatizationactive": {
+        "name": "Laden – Klimatisierung aktiv"
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_isrcpconfigcomplete": {
+        "name": "Laden – RCP-Konfiguration vollständig"
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_mode": {
+        "name": "Laden – Ladeprofil"
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_preference": {
+        "name": "Laden – Ladepräferenz"
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_settings_bidirectionalcharging_departuretimerelevant": {
+        "name": "Laden – Abfahrtszeit relevant"
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_settings_bidirectionalcharging_dischargeallowed": {
+        "name": "Laden – Entladen zulässig"
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_timertype": {
+        "name": "Laden – Timertyp"
+      },
+      "vehicle_drivetrain_electricengine_charging_reasonchargingend": {
+        "name": "Laden – Ursache des Ladeendes"
+      },
+      "vehicle_drivetrain_electricengine_charging_routeoptimizedchargingstatus": {
+        "name": "Laden – Status des routenoptimierten Ladevorgangs"
+      },
+      "vehicle_drivetrain_electricengine_charging_smeenergydeltafullycharged": {
+        "name": "Laden – Energie bis zur vollständigen Ladung"
+      },
+      "vehicle_drivetrain_electricengine_charging_status": {
+        "name": "Laden – Ladestatus"
+      },
+      "vehicle_drivetrain_electricengine_charging_timeremaining": {
+        "name": "Laden – Geschätzte Restzeit"
+      },
+      "vehicle_drivetrain_electricengine_charging_timetofullycharged": {
+        "name": "Laden – Zeit bis zur vollständigen Ladung"
+      },
+      "vehicle_drivetrain_electricengine_charging_windowselection": {
+        "name": "Laden – Auswahl des Ladezeitfensters"
+      },
+      "vehicle_powertrain_electric_chargingduration_displaycontrol": {
+        "name": "Laden – Ladezeitanzeige"
+      },
+      "vehicle_powertrain_electric_departuretime_displaycontrol": {
+        "name": "Laden – Abfahrtszeitanzeige"
+      },
+      "vehicle_body_chargingport_combinedstatus": {
+        "name": "Ladeanschluss – Verbindungsstatus"
+      },
+      "vehicle_body_chargingport_dcstatus": {
+        "name": "Ladeanschluss – Status des DC-Ladesteckers"
+      },
+      "vehicle_body_chargingport_ishospitalityactive": {
+        "name": "Ladeanschluss – Verriegelung des Ladesteckers nach dem Laden"
+      },
+      "vehicle_body_chargingport_isosessionid": {
+        "name": "Ladeanschluss – Sitzungs-ID"
+      },
+      "vehicle_body_chargingport_lockedstatus": {
+        "name": "Ladeanschluss – Verriegelungsstatus des Ladesteckers"
+      },
+      "vehicle_body_chargingport_plugeventid": {
+        "name": "Ladeanschluss – Ladestecker-Ereignis-ID"
+      },
+      "vehicle_body_chargingport_status": {
+        "name": "Ladeanschluss – Status des Ladesteckers"
+      },
+      "vehicle_body_chargingport_statuscleartext": {
+        "name": "Ladeanschluss – Statusmeldung"
+      },
+      "vehicle_body_flap_islocked": {
+        "name": "Ladeanschluss – Verriegelung der Ladeklappe"
+      },
+      "vehicle_body_flap_ispermanentlyunlocked": {
+        "name": "Ladeanschluss – Ladeklappe dauerhaft entriegelt"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_anyposition_flap_isautomaticopenandcloseactive": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (beliebige Position)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_anyposition_flap_isopen": {
+        "name": "Ladeanschluss – Status der Ladeklappe (beliebige Position)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_anyposition_isplugged": {
+        "name": "Ladeanschluss – Ladestecker verbunden (beliebige Position)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontleft_flap_isautomaticopenandcloseactive": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (vorne links)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontleft_flap_isopen": {
+        "name": "Ladeanschluss – Status der Ladeklappe (vorne links)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontleft_isplugged": {
+        "name": "Ladeanschluss – Ladestecker verbunden (vorne links)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontmiddle_flap_isautomaticopenandcloseactive": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (vorne Mitte)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontmiddle_flap_isopen": {
+        "name": "Ladeanschluss – Status der Ladeklappe (vorne Mitte)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontmiddle_isplugged": {
+        "name": "Ladeanschluss – Ladestecker verbunden (vorne Mitte)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontright_flap_isautomaticopenandcloseactive": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (vorne rechts)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontright_flap_isopen": {
+        "name": "Ladeanschluss – Status der Ladeklappe (vorne rechts)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontright_isplugged": {
+        "name": "Ladeanschluss – Ladestecker verbunden (vorne rechts)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearleft_flap_isautomaticopenandcloseactive": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (hinten links)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearleft_flap_isopen": {
+        "name": "Ladeanschluss – Status der Ladeklappe (hinten links)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearleft_isplugged": {
+        "name": "Ladeanschluss – Ladestecker verbunden (hinten links)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearmiddle_flap_isautomaticopenandcloseactive": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (hinten Mitte)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearmiddle_flap_isopen": {
+        "name": "Ladeanschluss – Status der Ladeklappe (hinten Mitte)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearmiddle_isplugged": {
+        "name": "Ladeanschluss – Ladestecker verbunden (hinten Mitte)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearright_flap_isautomaticopenandcloseactive": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (hinten rechts)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearright_flap_isopen": {
+        "name": "Ladeanschluss – Status der Ladeklappe (hinten rechts)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearright_isplugged": {
+        "name": "Ladeanschluss – Ladestecker verbunden (hinten rechts)"
+      },
+      "vehicle_cabin_climate_timers_overwritetimer_action": {
+        "name": "Status des einmaligen Klimatisierungstimers"
+      },
+      "vehicle_cabin_climate_timers_overwritetimer_hour": {
+        "name": "Klimatisierungstimer einmalig (Stunde)"
+      },
+      "vehicle_cabin_climate_timers_overwritetimer_minute": {
+        "name": "Klimatisierungstimer einmalig (Minute)"
+      },
+      "vehicle_cabin_climate_timers_weekdaystimer1_action": {
+        "name": "Status des wöchentlichen Klimatisierungstimers 1"
+      },
+      "vehicle_cabin_climate_timers_weekdaystimer1_hour": {
+        "name": "Klimatisierungstimer wöchentlich 1 (Stunde)"
+      },
+      "vehicle_cabin_climate_timers_weekdaystimer1_minute": {
+        "name": "Klimatisierungstimer wöchentlich 1 (Minute)"
+      },
+      "vehicle_cabin_climate_timers_weekdaystimer2_action": {
+        "name": "Status des wöchentlichen Klimatisierungstimers 2"
+      },
+      "vehicle_cabin_climate_timers_weekdaystimer2_hour": {
+        "name": "Klimatisierungstimer wöchentlich 2 (Stunde)"
+      },
+      "vehicle_cabin_climate_timers_weekdaystimer2_minute": {
+        "name": "Klimatisierungstimer wöchentlich 2 (Minute)"
+      },
+      "vehicle_cabin_convertible_roofretractablestatus": {
+        "name": "Status des einfahrbaren Cabrioverdecks"
+      },
+      "vehicle_cabin_convertible_roofstatus": {
+        "name": "Cabrioverdeckstatus"
+      },
+      "vehicle_cabin_door_row1_driver_isopen": {
+        "name": "Türstatus (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_door_row1_driver_position": {
+        "name": "Türposition (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_door_row1_passenger_isopen": {
+        "name": "Türstatus (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_door_row1_passenger_position": {
+        "name": "Türposition (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_door_row2_driver_isopen": {
+        "name": "Türstatus (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_door_row2_driver_position": {
+        "name": "Türposition (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_door_row2_passenger_isopen": {
+        "name": "Türstatus (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_door_row2_passenger_position": {
+        "name": "Türposition (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_door_lock_status": {
+        "name": "Türverriegelung"
+      },
+      "vehicle_cabin_door_status": {
+        "name": "Türstatus gesamt"
+      },
+      "vehicle_cabin_infotainment_navigation_currentlocation_altitude": {
+        "name": "Navigationshöhe"
+      },
+      "vehicle_cabin_infotainment_navigation_currentlocation_fixstatus": {
+        "name": "GPS-Fixstatus"
+      },
+      "vehicle_cabin_infotainment_navigation_currentlocation_heading": {
+        "name": "Fahrtrichtung"
+      },
+      "vehicle_cabin_infotainment_navigation_currentlocation_latitude": {
+        "name": "Breitengrad"
+      },
+      "vehicle_cabin_infotainment_navigation_currentlocation_longitude": {
+        "name": "Längengrad"
+      },
+      "vehicle_cabin_infotainment_navigation_currentlocation_numberofsatellites": {
+        "name": "Anzahl GPS-Satelliten"
+      },
+      "vehicle_cabin_infotainment_navigation_destinationset_arrivaltime": {
+        "name": "Ankunftszeit"
+      },
+      "vehicle_cabin_infotainment_navigation_destinationset_distance": {
+        "name": "Entfernung zum Ziel"
+      },
+      "vehicle_cabin_infotainment_navigation_destinationset_latitude": {
+        "name": "Breitengrad des Ziels"
+      },
+      "vehicle_cabin_infotainment_navigation_destinationset_longitude": {
+        "name": "Längengrad des Ziels"
+      },
+      "vehicle_cabin_infotainment_navigation_pointsofinterests_available": {
+        "name": "Verfügbare POI-Plätze"
+      },
+      "vehicle_cabin_infotainment_navigation_pointsofinterests_max": {
+        "name": "Maximale POI-Plätze"
+      },
+      "vehicle_cabin_infotainment_navigation_remainingrange": {
+        "name": "Restreichweite"
+      },
+      "vehicle_learningnavigation": {
+        "name": "Lernende Navigation"
+      },
+      "vehicle_body_hood_isopen": {
+        "name": "Motorhaubenstatus"
+      },
+      "vehicle_privacysettings_datacollection_regulations_obfcm": {
+        "name": "Einwilligung zur OBFCM-Datenübertragung"
+      },
+      "vehicle_vehicleidentification_connecteddrivecontractlist": {
+        "name": "Datenschutz ConnectedDrive-Verträge"
+      },
+      "vehicle_drivetrain_fuelsystem_consumptionoverlifetime_inchargeincreasing_referencedistance": {
+        "name": "OBFCM – Referenzstrecke (Lademodus)"
+      },
+      "vehicle_drivetrain_fuelsystem_consumptionoverlifetime_overall_fuel": {
+        "name": "OBFCM – Kraftstoffverbrauch insgesamt"
+      },
+      "vehicle_drivetrain_fuelsystem_consumptionoverlifetime_overall_referencedistance": {
+        "name": "OBFCM – Referenzstrecke insgesamt"
+      },
+      "vehicle_drivetrain_fuelsystem_consumptionoverlifetime_inchargedepleting_fuel": {
+        "name": "OBFCM – Kraftstoffverbrauch (Plug-in-Hybrid, Motor aus)"
+      },
+      "vehicle_drivetrain_fuelsystem_consumptionoverlifetime_inchargedepleting_referencedistanceengineoff": {
+        "name": "OBFCM – Referenzstrecke (Plug-in-Hybrid, Motor aus)"
+      },
+      "vehicle_drivetrain_fuelsystem_consumptionoverlifetime_inchargedepleting_referencedistanceengineon": {
+        "name": "OBFCM – Referenzstrecke (Plug-in-Hybrid, Motor an)"
+      },
+      "vehicle_drivetrain_fuelsystem_consumptionoverlifetime_inchargeincreasing_fuel": {
+        "name": "OBFCM – Kraftstoffverbrauch (Plug-in-Hybrid, Lademodus)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_isremoteenginestartdisclaimer": {
+        "name": "Vorkonditionierung – Hinweis zum Fernstart des Motors"
+      },
+      "vehicle_vehicle_preconditioning_activity": {
+        "name": "Vorkonditionierung – Status"
+      },
+      "vehicle_vehicle_preconditioning_error": {
+        "name": "Vorkonditionierung – Fehlergrund"
+      },
+      "vehicle_vehicle_preconditioning_isremoteenginerunning": {
+        "name": "Motor läuft"
+      },
+      "vehicle_vehicle_preconditioning_isremoteenginestartallowed": {
+        "name": "Fernstart des Motors zulässig"
+      },
+      "vehicle_vehicle_preconditioning_remainingtime": {
+        "name": "Vorkonditionierung – Restzeit"
+      },
+      "vehicle_cabin_hvac_preconditioning_status_comfortstate": {
+        "name": "Vorkonditionierung – Komfortstatus"
+      },
+      "vehicle_cabin_hvac_preconditioning_status_isexteriormirrorheatingactive": {
+        "name": "Vorkonditionierung – Außenspiegelheizung aktiv"
+      },
+      "vehicle_cabin_hvac_preconditioning_status_progress": {
+        "name": "Vorkonditionierung – Fortschritt"
+      },
+      "vehicle_cabin_hvac_preconditioning_status_reardefrostactive": {
+        "name": "Vorkonditionierung – Heckscheibenheizung aktiv"
+      },
+      "vehicle_cabin_hvac_preconditioning_status_remainingrunningtime": {
+        "name": "Vorkonditionierung – verbleibende Laufzeit"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row1_driverside_cooling": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row1_driverside_heating": {
+        "name": "Vorkonditionierung – Standardsitzheizung (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row1_passengerside_cooling": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row1_passengerside_heating": {
+        "name": "Vorkonditionierung – Standardsitzheizung (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row2_driverside_cooling": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row2_driverside_heating": {
+        "name": "Vorkonditionierung – Standardsitzheizung (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row2_passengerside_cooling": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row2_passengerside_heating": {
+        "name": "Vorkonditionierung – Standardsitzheizung (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row3_driverside_cooling": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (3. Sitzreihe, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row3_driverside_heating": {
+        "name": "Vorkonditionierung – Standardsitzheizung (3. Sitzreihe, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row3_passengerside_cooling": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (3. Sitzreihe, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row3_passengerside_heating": {
+        "name": "Vorkonditionierung – Standardsitzheizung (3. Sitzreihe, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_steeringwheel_heating": {
+        "name": "Vorkonditionierung – standardmäßige Lenkradheizung"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_targettemperature": {
+        "name": "Vorkonditionierung – Standard-Zieltemperatur"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row1_driverside_cooling": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row1_driverside_heating": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row1_passengerside_cooling": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row1_passengerside_heating": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row2_driverside_cooling": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row2_driverside_heating": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row2_passengerside_cooling": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row2_passengerside_heating": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row3_driverside_cooling": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (3. Sitzreihe, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row3_driverside_heating": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (3. Sitzreihe, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row3_passengerside_cooling": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (3. Sitzreihe, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row3_passengerside_heating": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (3. Sitzreihe, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_steeringwheel_heating": {
+        "name": "Vorkonditionierung – direkte Lenkradheizung"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_targettemperature": {
+        "name": "Vorkonditionierung – Direkte Zieltemperatur"
+      },
+      "vehicle_cabin_hvac_statusairpurification": {
+        "name": "Status der Luftreinigung"
+      },
+      "vehicle_drivetrain_fuelsystem_level": {
+        "name": "Reichweite – Tankfüllstand (%)"
+      },
+      "vehicle_drivetrain_fuelsystem_remainingfuel": {
+        "name": "Reichweite – Tankfüllstand"
+      },
+      "vehicle_drivetrain_lastremainingrange": {
+        "name": "Reichweite – Gesamtreichweite (zuletzt übermittelt)"
+      },
+      "vehicle_drivetrain_totalremainingrange": {
+        "name": "Reichweite – Schätzung während des Ladens"
+      },
+      "vehicle_drivetrain_fuelsystem_remainingfuelrange": {
+        "name": "Reichweite – Kraftstofftank"
+      },
+      "vehicle_drivetrain_avgelectricrangeconsumption": {
+        "name": "Elektrische Reichweite – durchschnittlicher Energieverbrauch"
+      },
+      "vehicle_drivetrain_electricengine_hvsmaxenergyabsolute": {
+        "name": "Maximale Energie der Hochvoltbatterie"
+      },
+      "vehicle_drivetrain_electricengine_kombiremainingelectricrange": {
+        "name": "Elektrische Reichweite – Restreichweite"
+      },
+      "vehicle_drivetrain_electricengine_remainingelectricrange": {
+        "name": "Elektrische Reichweite – Schätzung während des Ladens"
+      },
+      "vehicle_powertrain_electric_range_displaycontrol": {
+        "name": "Elektrische Reichweite – Anzeigesteuerung"
+      },
+      "vehicle_powertrain_electric_range_target": {
+        "name": "Elektrische Reichweite – Restreichweite (zielbasiert)"
+      },
+      "vehicle_cabin_seat_row1_driverside_cooling": {
+        "name": "Sitz – Belüftung (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_seat_row1_driverside_heating": {
+        "name": "Sitz – Heizung (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_seat_row1_passengerside_cooling": {
+        "name": "Sitz – Belüftung (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_seat_row1_passengerside_heating": {
+        "name": "Sitz – Heizung (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_seat_row2_driverside_cooling": {
+        "name": "Sitz – Belüftung (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_seat_row2_driverside_heating": {
+        "name": "Sitz – Heizung (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_seat_row2_passengerside_cooling": {
+        "name": "Sitz – Belüftung (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_seat_row2_passengerside_heating": {
+        "name": "Sitz – Heizung (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_seat_row3_driverside_cooling": {
+        "name": "Sitz – Belüftung (3. Sitzreihe, Fahrerseite)"
+      },
+      "vehicle_cabin_seat_row3_driverside_heating": {
+        "name": "Sitz – Heizung (3. Sitzreihe, Fahrerseite)"
+      },
+      "vehicle_cabin_seat_row3_passengerside_cooling": {
+        "name": "Sitz – Belüftung (3. Sitzreihe, Beifahrerseite)"
+      },
+      "vehicle_cabin_seat_row3_passengerside_heating": {
+        "name": "Sitz – Heizung (3. Sitzreihe, Beifahrerseite)"
+      },
+      "vehicle_servicedemand_defect_id": {
+        "name": "Service – Live-Diagnose"
+      },
+      "vehicle_sevice_preferredsevicepartner": {
+        "name": "Service – Bevorzugter Servicepartner"
+      },
+      "vehicle_status_checkcontrolmessages": {
+        "name": "Service – Check-Control-Meldungen"
+      },
+      "vehicle_status_conditionbasedservices": {
+        "name": "Service – Zustandsbasierte Wartung"
+      },
+      "vehicle_status_conditionbasedservices_brakefluid": {
+        "name": "Service – Bremsflüssigkeit"
+      },
+      "vehicle_status_conditionbasedservices_engineoil": {
+        "name": "Service – Motoröl"
+      },
+      "vehicle_status_conditionbasedservices_servicedue": {
+        "name": "Service fällig"
+      },
+      "vehicle_status_conditionbasedservices_statutoryinspection": {
+        "name": "Service – Hauptuntersuchung"
+      },
+      "vehicle_status_conditionbasedservices_vehiclecheck": {
+        "name": "Fahrzeug-Check"
+      },
+      "vehicle_status_conditionbasedservicesaveragedistanceperday": {
+        "name": "Service – Durchschnittliche Tagesstrecke (CBS)"
+      },
+      "vehicle_status_conditionbasedservicescount": {
+        "name": "Service – Anzahl CBS-Berichte"
+      },
+      "vehicle_status_servicedistance_next": {
+        "name": "Service – Strecke bis zum nächsten Service"
+      },
+      "vehicle_status_servicedistance_yellow": {
+        "name": "Service – Schwellwert für nächste Service-Strecke"
+      },
+      "vehicle_status_servicetime_huandauserviceyellow": {
+        "name": "Service – Schwellwert für Inspektionszeit"
+      },
+      "vehicle_status_servicetime_inspectiondatelegal": {
+        "name": "Service – Nächster Inspektionstermin"
+      },
+      "vehicle_status_servicetime_yellow": {
+        "name": "Service – Schwellwert für nächsten Servicezeitpunkt"
+      },
+      "vehicle_vehicle_avgspeed": {
+        "name": "Durchschnittsgeschwindigkeit"
+      },
+      "vehicle_vehicle_speedrange_lowerbound": {
+        "name": "Geschwindigkeit – Untere Geschwindigkeitsgrenze"
+      },
+      "vehicle_vehicle_speedrange_upperbound": {
+        "name": "Geschwindigkeit – Obere Geschwindigkeitsgrenze"
+      },
+      "vehicle_cabin_steeringwheel_heating": {
+        "name": "Lenkrad – Heizung"
+      },
+      "vehicle_cabin_sunroof_overallstatus": {
+        "name": "Gesamtstatus des Schiebedachs"
+      },
+      "vehicle_cabin_sunroof_relativeposition": {
+        "name": "Position des Schiebedachs"
+      },
+      "vehicle_cabin_sunroof_shade_position": {
+        "name": "Position des Schiebedach-Sonnenschutzes"
+      },
+      "vehicle_cabin_sunroof_status": {
+        "name": "Schiebedachstatus"
+      },
+      "vehicle_cabin_sunroof_tiltstatus": {
+        "name": "Kippstatus des Schiebedachs"
+      },
+      "vehicle_channel_teleservice_lastautomaticservicecalltime": {
+        "name": "TeleService – Zeitpunkt des automatischen Serviceanrufs"
+      },
+      "vehicle_channel_teleservice_lastbreakdowncalltime": {
+        "name": "TeleService – Zeitpunkt des Pannenanrufs"
+      },
+      "vehicle_channel_teleservice_lastmanualcalltime": {
+        "name": "TeleService – Zeitpunkt des manuellen Serviceanrufs"
+      },
+      "vehicle_channel_teleservice_lastteleservicereporttime": {
+        "name": "Zeitpunkt des TeleService-Berichts"
+      },
+      "vehicle_channel_teleservice_status": {
+        "name": "TeleService – Verfügbarkeitsstatus"
+      },
+      "vehicle_chassis_axle_row1_wheel_left_tire_pressure": {
+        "name": "Reifendruck (vorne links)"
+      },
+      "vehicle_chassis_axle_row1_wheel_left_tire_pressuretarget": {
+        "name": "Reifendruck-Sollwert (vorne links)"
+      },
+      "vehicle_chassis_axle_row1_wheel_left_tire_temperature": {
+        "name": "Reifentemperatur (vorne links)"
+      },
+      "vehicle_chassis_axle_row1_wheel_right_tire_pressure": {
+        "name": "Reifendruck (vorne rechts)"
+      },
+      "vehicle_chassis_axle_row1_wheel_right_tire_pressuretarget": {
+        "name": "Reifendruck-Sollwert (vorne rechts)"
+      },
+      "vehicle_chassis_axle_row1_wheel_right_tire_temperature": {
+        "name": "Reifentemperatur (vorne rechts)"
+      },
+      "vehicle_chassis_axle_row2_wheel_left_tire_pressure": {
+        "name": "Reifendruck (hinten links)"
+      },
+      "vehicle_chassis_axle_row2_wheel_left_tire_pressuretarget": {
+        "name": "Reifendruck-Sollwert (hinten links)"
+      },
+      "vehicle_chassis_axle_row2_wheel_left_tire_temperature": {
+        "name": "Reifentemperatur (hinten links)"
+      },
+      "vehicle_chassis_axle_row2_wheel_right_tire_pressure": {
+        "name": "Reifendruck (hinten rechts)"
+      },
+      "vehicle_chassis_axle_row2_wheel_right_tire_pressuretarget": {
+        "name": "Reifendruck-Sollwert (hinten rechts)"
+      },
+      "vehicle_chassis_axle_row2_wheel_right_tire_temperature": {
+        "name": "Reifentemperatur (hinten rechts)"
+      },
+      "vehicle_chassis_axle_wheel_tire_diagnosis": {
+        "name": "Reifendiagnosedaten"
+      },
+      "vehicle_trip_segment_accumulated_acceleration_starsaverage": {
+        "name": "Fahrt – Fahrstil (Beschleunigung)"
+      },
+      "vehicle_trip_segment_accumulated_chassis_brake_starsaverage": {
+        "name": "Fahrt – Fahrstil (Vorausschau)"
+      },
+      "vehicle_trip_segment_accumulated_drivetrain_electricengine_energyconsumptioncomfort": {
+        "name": "Fahrt – Energieverbrauch (Komfortmodus)"
+      },
+      "vehicle_trip_segment_accumulated_drivetrain_transmission_setting_fractiondriveecopro": {
+        "name": "Fahrt – Anteil ECO-PRO-Modus"
+      },
+      "vehicle_trip_segment_accumulated_drivetrain_transmission_setting_fractiondriveecoproplus": {
+        "name": "Fahrt – Anteil ECO-PRO-Plus-Modus"
+      },
+      "vehicle_trip_segment_accumulated_drivetrain_transmission_setting_fractiondriveelectric": {
+        "name": "Fahrt – Elektrischer Fahranteil"
+      },
+      "vehicle_trip_segment_end_drivetrain_batterymanagement_hvsoc": {
+        "name": "Ladezustand am Ende der Fahrt"
+      },
+      "vehicle_trip_segment_end_time": {
+        "name": "Zeitpunkt der letzten Fahrt"
+      },
+      "vehicle_trip_segment_end_travelleddistance": {
+        "name": "Strecke der letzten Fahrt"
+      },
+      "vehicle_vehicle_averageweeklydistancelongterm": {
+        "name": "Durchschnittliche Wochenstrecke (langfristig)"
+      },
+      "vehicle_vehicle_averageweeklydistanceshortterm": {
+        "name": "Durchschnittliche Wochenstrecke"
+      },
+      "vehicle_body_trunk_door_isopen": {
+        "name": "Heckklappe – Türstatus"
+      },
+      "vehicle_body_trunk_islocked": {
+        "name": "Verriegelungsstatus der Heckklappe"
+      },
+      "vehicle_body_trunk_isopen": {
+        "name": "Heckklappenstatus"
+      },
+      "vehicle_body_trunk_left_door_isopen": {
+        "name": "Heckklappe – Türstatus (links)"
+      },
+      "vehicle_body_trunk_lower_door_isopen": {
+        "name": "Heckklappe – Türstatus (unten)"
+      },
+      "vehicle_body_trunk_right_door_isopen": {
+        "name": "Heckklappe – Türstatus (rechts)"
+      },
+      "vehicle_body_trunk_upper_door_isopen": {
+        "name": "Heckklappe – Türstatus (oben)"
+      },
+      "vehicle_body_trunk_window_isopen": {
+        "name": "Status der Heckklappenscheibe"
+      },
+      "vehicle_body_lights_isrunningon": {
+        "name": "Fahrzeug – Lichtstatus"
+      },
+      "vehicle_drivetrain_engine_isactive": {
+        "name": "Fahrzeug – Zündungsstatus"
+      },
+      "vehicle_drivetrain_engine_isignitionon": {
+        "name": "Fahrzeug – Motorstatus"
+      },
+      "vehicle_drivetrain_internalcombustionengine_engine_ect": {
+        "name": "Fahrzeug – Kühlmitteltemperatur"
+      },
+      "vehicle_ismoving": {
+        "name": "Fahrzeug – Bewegungsstatus"
+      },
+      "vehicle_vehicle_avgauxpower": {
+        "name": "Leistung der Nebenverbraucher"
+      },
+      "vehicle_vehicle_deepsleepmodeactive": {
+        "name": "Fahrzeug – Tiefschlafmodus"
+      },
+      "vehicle_vehicle_travelleddistance": {
+        "name": "Kilometerstand des Fahrzeugs"
+      },
+      "vehicle_cabin_infotainment_displayunit_distance": {
+        "name": "Fahrzeug – Anzeigeeinheit (Entfernung)"
+      },
+      "vehicle_cabin_infotainment_hmi_distanceunit": {
+        "name": "Fahrzeug – Entfernungseinheit"
+      },
+      "vehicle_cabin_infotainment_ismobilephoneconnected": {
+        "name": "Fahrzeug – Mobiltelefon-Verbindungsstatus"
+      },
+      "vehicle_channel_ista_obfcm_lasttransmissionstatus": {
+        "name": "Status der letzten OBFCM-Übertragung"
+      },
+      "vehicle_channel_ngtp_timevehicle": {
+        "name": "Fahrzeug – Uhrzeit im Fahrzeug"
+      },
+      "vehicle_electroniccontrolunit_diagnostictroublecodes_raw": {
+        "name": "Fahrzeug – Fehlerspeicher"
+      },
+      "vehicle_extras_optionalequipment_code": {
+        "name": "Fahrzeug – Sonderausstattung"
+      },
+      "vehicle_look_image": {
+        "name": "Fahrzeug – Bild"
+      },
+      "vehicle_sim_status": {
+        "name": "Fahrzeug – SIM-Aktivierungsstatus"
+      },
+      "vehicle_vehicle_timesetting": {
+        "name": "Fahrzeug – Zeitzoneneinstellung"
+      },
+      "vehicle_vehicleidentification_basicvehicledata": {
+        "name": "Fahrzeug – Fahrzeuggrunddaten"
+      },
+      "vehicle_cabin_window_row1_driver_status": {
+        "name": "Fensterstatus (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_window_row1_passenger_status": {
+        "name": "Fensterstatus (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_window_row2_driver_status": {
+        "name": "Fensterstatus (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_window_row2_passenger_status": {
+        "name": "Fensterstatus (hinten, Beifahrerseite)"
+      },
+      "vehicle_predicted_soc": {
+        "name": "Prognostizierter Ladezustand"
+      },
+      "vehicle_magic_soc": {
+        "name": "Magic-SOC-Prognose"
+      },
+      "vehicle_manual_battery_capacity": {
+        "name": "Manuelle Hochvoltbatterie-Kapazität"
+      },
+      "diagnostics_vehicle_metadata": {
+        "name": "Fahrzeugdaten"
+      },
+      "diagnostics_charging_matrix": {
+        "name": "Ladewirkungsgrad-Matrix"
+      },
+      "diagnostics_charging_history": {
+        "name": "Ladeverlauf"
+      },
+      "diagnostics_tyre_diagnosis": {
+        "name": "Reifendiagnose"
+      },
+      "charging_history_energy": {
+        "name": "Geladene Energie (Ladeverlauf)"
+      },
+      "last_message": {
+        "name": "Letzte Nachricht empfangen"
+      },
+      "last_telematic_api": {
+        "name": "Letzter Telematik-API-Aufruf"
+      },
+      "connection_status": {
+        "name": "Stream-Verbindungsstatus"
+      },
+      "vehicle_powertrain_electric_battery_charging_authenticationstatus": {
+        "name": "Hochvoltbatterie – Ladeauthentifizierungsstatus"
+      }
+    },
+    "binary_sensor": {
+      "vehicle_vehicle_antitheftalarmsystem_alarm_activationtime": {
+        "name": "Zeitpunkt der Alarmauslösung"
+      },
+      "vehicle_vehicle_antitheftalarmsystem_alarm_armstatus": {
+        "name": "Scharfschaltungsstatus der Alarmanlage"
+      },
+      "vehicle_vehicle_antitheftalarmsystem_alarm_ison": {
+        "name": "Alarm aktiv"
+      },
+      "vehicle_electricalsystem_battery_servicedemand_recharge": {
+        "name": "12-V-Batterie muss geladen werden"
+      },
+      "vehicle_electricalsystem_battery_servicedemand_replace": {
+        "name": "Batteriezustand"
+      },
+      "vehicle_electricalsystem_battery_stateofcharge": {
+        "name": "Ladezustand (12 V)"
+      },
+      "vehicle_electricalsystem_battery_stateofchargeplausibility": {
+        "name": "Plausibilität des Ladezustands (12 V)"
+      },
+      "vehicle_electricalsystem_battery_voltage": {
+        "name": "Batteriespannung (12 V)"
+      },
+      "vehicle_electricalsystem_battery48v_stateofhealth_displayed": {
+        "name": "Batteriezustand (48 V)"
+      },
+      "vehicle_powertrain_electric_battery_bidirectionalcharging_availability": {
+        "name": "Hochvoltbatterie – bidirektionales Laden verfügbar"
+      },
+      "vehicle_powertrain_electric_battery_charging_aclimit_isactive": {
+        "name": "Hochvoltbatterie – Ladebegrenzung aktiv"
+      },
+      "vehicle_powertrain_electric_battery_charging_aclimit_max": {
+        "name": "Hochvoltbatterie – maximaler Ladestrom"
+      },
+      "vehicle_powertrain_electric_battery_charging_aclimit_min": {
+        "name": "Hochvoltbatterie – minimaler Ladestrom"
+      },
+      "vehicle_powertrain_electric_battery_charging_aclimit_selected": {
+        "name": "Hochvoltbatterie – Ladestrombegrenzung"
+      },
+      "vehicle_powertrain_electric_battery_charging_acousticlimit": {
+        "name": "Hochvoltbatterie – Akustische Ladebegrenzung"
+      },
+      "vehicle_powertrain_electric_battery_charging_batterycarepersisted_isactive": {
+        "name": "Hochvoltbatterie – Batteriepflege aktiv"
+      },
+      "vehicle_powertrain_electric_battery_charging_batterycarepersisted_ispreservingchargingmode": {
+        "name": "Hochvoltbatterie – Batteriepflegemodus"
+      },
+      "vehicle_powertrain_electric_battery_charging_batterycarepersisted_isreducedtargetsoe": {
+        "name": "Hochvoltbatterie – reduzierter Energiezielwert"
+      },
+      "vehicle_powertrain_electric_battery_charging_cablecheckvoltage": {
+        "name": "Hochvoltbatterie – Spannung der Kabelprüfung"
+      },
+      "vehicle_powertrain_electric_battery_charging_dcchargingmodeactive": {
+        "name": "Hochvoltbatterie – DC-Lademodus"
+      },
+      "vehicle_powertrain_electric_battery_charging_history_sessionslist": {
+        "name": "Hochvoltbatterie – Ladeverlauf"
+      },
+      "vehicle_powertrain_electric_battery_charging_power": {
+        "name": "Hochvoltbatterie – Ladeleistung"
+      },
+      "vehicle_powertrain_electric_battery_charging_preferencesmartcharging": {
+        "name": "Hochvoltbatterie – Intelligentes Laden"
+      },
+      "vehicle_powertrain_electric_battery_charging_settingslist": {
+        "name": "Hochvoltbatterie – Standortabhängige Ladeeinstellungen"
+      },
+      "vehicle_powertrain_electric_battery_preconditioning_automaticmode_statusfeedback": {
+        "name": "Hochvoltbatterie – Status der automatischen Vorkonditionierung"
+      },
+      "vehicle_powertrain_electric_battery_preconditioning_manualmode_statusfeedback": {
+        "name": "Hochvoltbatterie – Status der manuellen Vorkonditionierung"
+      },
+      "vehicle_powertrain_electric_battery_preconditioning_state": {
+        "name": "Status der Vorkonditionierung der Hochvoltbatterie"
+      },
+      "vehicle_powertrain_electric_battery_stateofcharge_displayed": {
+        "name": "Hochvoltbatterie – Ladezustand"
+      },
+      "vehicle_powertrain_electric_battery_stateofcharge_target": {
+        "name": "Hochvoltbatterie – Ladeziel"
+      },
+      "vehicle_powertrain_electric_battery_stateofcharge_targetmin": {
+        "name": "Hochvoltbatterie – Ladeziel (min)"
+      },
+      "vehicle_powertrain_electric_battery_stateofcharge_targetsocforprofessionalmode": {
+        "name": "Hochvoltbatterie – Ladeziel (Profi-Modus)"
+      },
+      "vehicle_powertrain_electric_battery_stateofhealth_displayed": {
+        "name": "Hochvoltbatterie – Batteriezustand (SOCE)"
+      },
+      "vehicle_drivetrain_batterymanagement_batterysizemax": {
+        "name": "Hochvoltbatterie – maximale Größe"
+      },
+      "vehicle_drivetrain_batterymanagement_header": {
+        "name": "Hochvoltbatterie – Ladezustand (Batteriemanagement)"
+      },
+      "vehicle_drivetrain_batterymanagement_maxenergy": {
+        "name": "Hochvoltbatterie – Energieinhalt"
+      },
+      "vehicle_drivetrain_electricengine_charging_acampere": {
+        "name": "Laden – AC-Ladestrom"
+      },
+      "vehicle_drivetrain_electricengine_charging_acrestriction_factor": {
+        "name": "Laden – AC-Begrenzungsfaktor"
+      },
+      "vehicle_drivetrain_electricengine_charging_acrestriction_ischosen": {
+        "name": "Laden – AC-Begrenzung ausgewählt"
+      },
+      "vehicle_drivetrain_electricengine_charging_acvoltage": {
+        "name": "Laden – AC-Ladespannung"
+      },
+      "vehicle_drivetrain_electricengine_charging_authentication_status": {
+        "name": "Laden – Authentifizierungsstatus"
+      },
+      "vehicle_drivetrain_electricengine_charging_chargingmode": {
+        "name": "Laden – Lademodus"
+      },
+      "vehicle_drivetrain_electricengine_charging_connectiontype": {
+        "name": "Laden – Ladeanschlusstyp"
+      },
+      "vehicle_drivetrain_electricengine_charging_connectorstatus": {
+        "name": "Laden – Status des Ladesteckers"
+      },
+      "vehicle_drivetrain_electricengine_charging_consumptionoverlifetime_engineoff_gridenergy": {
+        "name": "Laden – Bezogene Energie (Motor aus)"
+      },
+      "vehicle_drivetrain_electricengine_charging_consumptionoverlifetime_engineoff_referencedistance": {
+        "name": "Laden – Referenzstrecke (Motor aus)"
+      },
+      "vehicle_drivetrain_electricengine_charging_consumptionoverlifetime_engineon_gridenergy": {
+        "name": "Laden – Bezogene Energie (Motor an)"
+      },
+      "vehicle_drivetrain_electricengine_charging_consumptionoverlifetime_engineon_referencedistance": {
+        "name": "Laden – Referenzstrecke (Motor an)"
+      },
+      "vehicle_drivetrain_electricengine_charging_consumptionoverlifetime_overall_gridenergy": {
+        "name": "Laden – Bezogene Energie insgesamt"
+      },
+      "vehicle_drivetrain_electricengine_charging_consumptionoverlifetime_overall_referencedistance": {
+        "name": "Laden – Referenzstrecke insgesamt"
+      },
+      "vehicle_drivetrain_electricengine_charging_hvpmfinishreason": {
+        "name": "Laden – Grund des Ladeendes"
+      },
+      "vehicle_drivetrain_electricengine_charging_hvstatus": {
+        "name": "Laden – Status des Hochvoltsystems"
+      },
+      "vehicle_drivetrain_electricengine_charging_isimmediatechargingsystemreason": {
+        "name": "Laden – Grund für sofortiges Laden"
+      },
+      "vehicle_drivetrain_electricengine_charging_issingleimmediatecharging": {
+        "name": "Laden – Status des sofortigen Ladens"
+      },
+      "vehicle_drivetrain_electricengine_charging_lastchargingreason": {
+        "name": "Laden – Grund des letzten Ladevorgangs"
+      },
+      "vehicle_drivetrain_electricengine_charging_lastchargingresult": {
+        "name": "Laden – Ergebnis des letzten Ladevorgangs"
+      },
+      "vehicle_drivetrain_electricengine_charging_level": {
+        "name": "Laden – Prognostizierter Ladezustand"
+      },
+      "vehicle_drivetrain_electricengine_charging_method": {
+        "name": "Laden – Lademethode"
+      },
+      "vehicle_drivetrain_electricengine_charging_modedeviation": {
+        "name": "Laden – Abweichung vom Lademodus"
+      },
+      "vehicle_drivetrain_electricengine_charging_phasenumber": {
+        "name": "Laden – Ladephasen"
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_climatizationactive": {
+        "name": "Laden – Klimatisierung aktiv"
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_isrcpconfigcomplete": {
+        "name": "Laden – RCP-Konfiguration vollständig"
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_mode": {
+        "name": "Laden – Ladeprofil"
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_preference": {
+        "name": "Laden – Ladepräferenz"
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_settings_bidirectionalcharging_departuretimerelevant": {
+        "name": "Laden – Abfahrtszeit relevant"
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_settings_bidirectionalcharging_dischargeallowed": {
+        "name": "Laden – Entladen zulässig"
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_timertype": {
+        "name": "Laden – Timertyp"
+      },
+      "vehicle_drivetrain_electricengine_charging_reasonchargingend": {
+        "name": "Laden – Ursache des Ladeendes"
+      },
+      "vehicle_drivetrain_electricengine_charging_routeoptimizedchargingstatus": {
+        "name": "Laden – Status des routenoptimierten Ladevorgangs"
+      },
+      "vehicle_drivetrain_electricengine_charging_smeenergydeltafullycharged": {
+        "name": "Laden – Energie bis zur vollständigen Ladung"
+      },
+      "vehicle_drivetrain_electricengine_charging_status": {
+        "name": "Laden – Ladestatus"
+      },
+      "vehicle_drivetrain_electricengine_charging_timeremaining": {
+        "name": "Laden – Geschätzte Restzeit"
+      },
+      "vehicle_drivetrain_electricengine_charging_timetofullycharged": {
+        "name": "Laden – Zeit bis zur vollständigen Ladung"
+      },
+      "vehicle_drivetrain_electricengine_charging_windowselection": {
+        "name": "Laden – Auswahl des Ladezeitfensters"
+      },
+      "vehicle_powertrain_electric_chargingduration_displaycontrol": {
+        "name": "Laden – Ladezeitanzeige"
+      },
+      "vehicle_powertrain_electric_departuretime_displaycontrol": {
+        "name": "Laden – Abfahrtszeitanzeige"
+      },
+      "vehicle_body_chargingport_combinedstatus": {
+        "name": "Ladeanschluss – Verbindungsstatus"
+      },
+      "vehicle_body_chargingport_dcstatus": {
+        "name": "Ladeanschluss – Status des DC-Ladesteckers"
+      },
+      "vehicle_body_chargingport_ishospitalityactive": {
+        "name": "Ladeanschluss – Verriegelung des Ladesteckers nach dem Laden"
+      },
+      "vehicle_body_chargingport_isosessionid": {
+        "name": "Ladeanschluss – Sitzungs-ID"
+      },
+      "vehicle_body_chargingport_lockedstatus": {
+        "name": "Ladeanschluss – Verriegelungsstatus des Ladesteckers"
+      },
+      "vehicle_body_chargingport_plugeventid": {
+        "name": "Ladeanschluss – Ladestecker-Ereignis-ID"
+      },
+      "vehicle_body_chargingport_status": {
+        "name": "Ladeanschluss – Status des Ladesteckers"
+      },
+      "vehicle_body_chargingport_statuscleartext": {
+        "name": "Ladeanschluss – Statusmeldung"
+      },
+      "vehicle_body_flap_islocked": {
+        "name": "Ladeanschluss – Verriegelung der Ladeklappe"
+      },
+      "vehicle_body_flap_ispermanentlyunlocked": {
+        "name": "Ladeanschluss – Ladeklappe dauerhaft entriegelt"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_anyposition_flap_isautomaticopenandcloseactive": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (beliebige Position)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_anyposition_flap_isopen": {
+        "name": "Ladeanschluss – Status der Ladeklappe (beliebige Position)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_anyposition_isplugged": {
+        "name": "Ladeanschluss – Ladestecker verbunden (beliebige Position)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontleft_flap_isautomaticopenandcloseactive": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (vorne links)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontleft_flap_isopen": {
+        "name": "Ladeanschluss – Status der Ladeklappe (vorne links)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontleft_isplugged": {
+        "name": "Ladeanschluss – Ladestecker verbunden (vorne links)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontmiddle_flap_isautomaticopenandcloseactive": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (vorne Mitte)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontmiddle_flap_isopen": {
+        "name": "Ladeanschluss – Status der Ladeklappe (vorne Mitte)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontmiddle_isplugged": {
+        "name": "Ladeanschluss – Ladestecker verbunden (vorne Mitte)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontright_flap_isautomaticopenandcloseactive": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (vorne rechts)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontright_flap_isopen": {
+        "name": "Ladeanschluss – Status der Ladeklappe (vorne rechts)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontright_isplugged": {
+        "name": "Ladeanschluss – Ladestecker verbunden (vorne rechts)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearleft_flap_isautomaticopenandcloseactive": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (hinten links)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearleft_flap_isopen": {
+        "name": "Ladeanschluss – Status der Ladeklappe (hinten links)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearleft_isplugged": {
+        "name": "Ladeanschluss – Ladestecker verbunden (hinten links)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearmiddle_flap_isautomaticopenandcloseactive": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (hinten Mitte)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearmiddle_flap_isopen": {
+        "name": "Ladeanschluss – Status der Ladeklappe (hinten Mitte)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearmiddle_isplugged": {
+        "name": "Ladeanschluss – Ladestecker verbunden (hinten Mitte)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearright_flap_isautomaticopenandcloseactive": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (hinten rechts)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearright_flap_isopen": {
+        "name": "Ladeanschluss – Status der Ladeklappe (hinten rechts)"
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearright_isplugged": {
+        "name": "Ladeanschluss – Ladestecker verbunden (hinten rechts)"
+      },
+      "vehicle_cabin_climate_timers_overwritetimer_action": {
+        "name": "Status des einmaligen Klimatisierungstimers"
+      },
+      "vehicle_cabin_climate_timers_overwritetimer_hour": {
+        "name": "Klimatisierungstimer einmalig (Stunde)"
+      },
+      "vehicle_cabin_climate_timers_overwritetimer_minute": {
+        "name": "Klimatisierungstimer einmalig (Minute)"
+      },
+      "vehicle_cabin_climate_timers_weekdaystimer1_action": {
+        "name": "Status des wöchentlichen Klimatisierungstimers 1"
+      },
+      "vehicle_cabin_climate_timers_weekdaystimer1_hour": {
+        "name": "Klimatisierungstimer wöchentlich 1 (Stunde)"
+      },
+      "vehicle_cabin_climate_timers_weekdaystimer1_minute": {
+        "name": "Klimatisierungstimer wöchentlich 1 (Minute)"
+      },
+      "vehicle_cabin_climate_timers_weekdaystimer2_action": {
+        "name": "Status des wöchentlichen Klimatisierungstimers 2"
+      },
+      "vehicle_cabin_climate_timers_weekdaystimer2_hour": {
+        "name": "Klimatisierungstimer wöchentlich 2 (Stunde)"
+      },
+      "vehicle_cabin_climate_timers_weekdaystimer2_minute": {
+        "name": "Klimatisierungstimer wöchentlich 2 (Minute)"
+      },
+      "vehicle_cabin_convertible_roofretractablestatus": {
+        "name": "Status des einfahrbaren Cabrioverdecks"
+      },
+      "vehicle_cabin_convertible_roofstatus": {
+        "name": "Cabrioverdeckstatus"
+      },
+      "vehicle_cabin_door_row1_driver_isopen": {
+        "name": "Türstatus (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_door_row1_driver_position": {
+        "name": "Türposition (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_door_row1_passenger_isopen": {
+        "name": "Türstatus (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_door_row1_passenger_position": {
+        "name": "Türposition (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_door_row2_driver_isopen": {
+        "name": "Türstatus (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_door_row2_driver_position": {
+        "name": "Türposition (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_door_row2_passenger_isopen": {
+        "name": "Türstatus (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_door_row2_passenger_position": {
+        "name": "Türposition (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_door_lock_status": {
+        "name": "Türverriegelung"
+      },
+      "vehicle_cabin_door_status": {
+        "name": "Türstatus gesamt"
+      },
+      "vehicle_cabin_infotainment_navigation_currentlocation_altitude": {
+        "name": "Navigationshöhe"
+      },
+      "vehicle_cabin_infotainment_navigation_currentlocation_fixstatus": {
+        "name": "GPS-Fixstatus"
+      },
+      "vehicle_cabin_infotainment_navigation_currentlocation_heading": {
+        "name": "Fahrtrichtung"
+      },
+      "vehicle_cabin_infotainment_navigation_currentlocation_latitude": {
+        "name": "Breitengrad"
+      },
+      "vehicle_cabin_infotainment_navigation_currentlocation_longitude": {
+        "name": "Längengrad"
+      },
+      "vehicle_cabin_infotainment_navigation_currentlocation_numberofsatellites": {
+        "name": "Anzahl GPS-Satelliten"
+      },
+      "vehicle_cabin_infotainment_navigation_destinationset_arrivaltime": {
+        "name": "Ankunftszeit"
+      },
+      "vehicle_cabin_infotainment_navigation_destinationset_distance": {
+        "name": "Entfernung zum Ziel"
+      },
+      "vehicle_cabin_infotainment_navigation_destinationset_latitude": {
+        "name": "Breitengrad des Ziels"
+      },
+      "vehicle_cabin_infotainment_navigation_destinationset_longitude": {
+        "name": "Längengrad des Ziels"
+      },
+      "vehicle_cabin_infotainment_navigation_pointsofinterests_available": {
+        "name": "Verfügbare POI-Plätze"
+      },
+      "vehicle_cabin_infotainment_navigation_pointsofinterests_max": {
+        "name": "Maximale POI-Plätze"
+      },
+      "vehicle_cabin_infotainment_navigation_remainingrange": {
+        "name": "Restreichweite"
+      },
+      "vehicle_learningnavigation": {
+        "name": "Lernende Navigation"
+      },
+      "vehicle_body_hood_isopen": {
+        "name": "Motorhaubenstatus"
+      },
+      "vehicle_privacysettings_datacollection_regulations_obfcm": {
+        "name": "Einwilligung zur OBFCM-Datenübertragung"
+      },
+      "vehicle_vehicleidentification_connecteddrivecontractlist": {
+        "name": "Datenschutz ConnectedDrive-Verträge"
+      },
+      "vehicle_drivetrain_fuelsystem_consumptionoverlifetime_inchargeincreasing_referencedistance": {
+        "name": "OBFCM – Referenzstrecke (Lademodus)"
+      },
+      "vehicle_drivetrain_fuelsystem_consumptionoverlifetime_overall_fuel": {
+        "name": "OBFCM – Kraftstoffverbrauch insgesamt"
+      },
+      "vehicle_drivetrain_fuelsystem_consumptionoverlifetime_overall_referencedistance": {
+        "name": "OBFCM – Referenzstrecke insgesamt"
+      },
+      "vehicle_drivetrain_fuelsystem_consumptionoverlifetime_inchargedepleting_fuel": {
+        "name": "OBFCM – Kraftstoffverbrauch (Plug-in-Hybrid, Motor aus)"
+      },
+      "vehicle_drivetrain_fuelsystem_consumptionoverlifetime_inchargedepleting_referencedistanceengineoff": {
+        "name": "OBFCM – Referenzstrecke (Plug-in-Hybrid, Motor aus)"
+      },
+      "vehicle_drivetrain_fuelsystem_consumptionoverlifetime_inchargedepleting_referencedistanceengineon": {
+        "name": "OBFCM – Referenzstrecke (Plug-in-Hybrid, Motor an)"
+      },
+      "vehicle_drivetrain_fuelsystem_consumptionoverlifetime_inchargeincreasing_fuel": {
+        "name": "OBFCM – Kraftstoffverbrauch (Plug-in-Hybrid, Lademodus)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_isremoteenginestartdisclaimer": {
+        "name": "Vorkonditionierung – Hinweis zum Fernstart des Motors"
+      },
+      "vehicle_vehicle_preconditioning_activity": {
+        "name": "Vorkonditionierung – Status"
+      },
+      "vehicle_vehicle_preconditioning_error": {
+        "name": "Vorkonditionierung – Fehlergrund"
+      },
+      "vehicle_vehicle_preconditioning_isremoteenginerunning": {
+        "name": "Motor läuft"
+      },
+      "vehicle_vehicle_preconditioning_isremoteenginestartallowed": {
+        "name": "Fernstart des Motors zulässig"
+      },
+      "vehicle_vehicle_preconditioning_remainingtime": {
+        "name": "Vorkonditionierung – Restzeit"
+      },
+      "vehicle_cabin_hvac_preconditioning_status_comfortstate": {
+        "name": "Vorkonditionierung – Komfortstatus"
+      },
+      "vehicle_cabin_hvac_preconditioning_status_isexteriormirrorheatingactive": {
+        "name": "Vorkonditionierung – Außenspiegelheizung aktiv"
+      },
+      "vehicle_cabin_hvac_preconditioning_status_progress": {
+        "name": "Vorkonditionierung – Fortschritt"
+      },
+      "vehicle_cabin_hvac_preconditioning_status_reardefrostactive": {
+        "name": "Vorkonditionierung – Heckscheibenheizung aktiv"
+      },
+      "vehicle_cabin_hvac_preconditioning_status_remainingrunningtime": {
+        "name": "Vorkonditionierung – verbleibende Laufzeit"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row1_driverside_cooling": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row1_driverside_heating": {
+        "name": "Vorkonditionierung – Standardsitzheizung (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row1_passengerside_cooling": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row1_passengerside_heating": {
+        "name": "Vorkonditionierung – Standardsitzheizung (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row2_driverside_cooling": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row2_driverside_heating": {
+        "name": "Vorkonditionierung – Standardsitzheizung (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row2_passengerside_cooling": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row2_passengerside_heating": {
+        "name": "Vorkonditionierung – Standardsitzheizung (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row3_driverside_cooling": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (3. Sitzreihe, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row3_driverside_heating": {
+        "name": "Vorkonditionierung – Standardsitzheizung (3. Sitzreihe, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row3_passengerside_cooling": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (3. Sitzreihe, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row3_passengerside_heating": {
+        "name": "Vorkonditionierung – Standardsitzheizung (3. Sitzreihe, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_steeringwheel_heating": {
+        "name": "Vorkonditionierung – standardmäßige Lenkradheizung"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_targettemperature": {
+        "name": "Vorkonditionierung – Standard-Zieltemperatur"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row1_driverside_cooling": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row1_driverside_heating": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row1_passengerside_cooling": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row1_passengerside_heating": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row2_driverside_cooling": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row2_driverside_heating": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row2_passengerside_cooling": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row2_passengerside_heating": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row3_driverside_cooling": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (3. Sitzreihe, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row3_driverside_heating": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (3. Sitzreihe, Fahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row3_passengerside_cooling": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (3. Sitzreihe, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row3_passengerside_heating": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (3. Sitzreihe, Beifahrerseite)"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_steeringwheel_heating": {
+        "name": "Vorkonditionierung – direkte Lenkradheizung"
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_targettemperature": {
+        "name": "Vorkonditionierung – Direkte Zieltemperatur"
+      },
+      "vehicle_cabin_hvac_statusairpurification": {
+        "name": "Status der Luftreinigung"
+      },
+      "vehicle_drivetrain_fuelsystem_level": {
+        "name": "Reichweite – Tankfüllstand (%)"
+      },
+      "vehicle_drivetrain_fuelsystem_remainingfuel": {
+        "name": "Reichweite – Tankfüllstand"
+      },
+      "vehicle_drivetrain_lastremainingrange": {
+        "name": "Reichweite – Gesamtreichweite (zuletzt übermittelt)"
+      },
+      "vehicle_drivetrain_totalremainingrange": {
+        "name": "Reichweite – Schätzung während des Ladens"
+      },
+      "vehicle_drivetrain_fuelsystem_remainingfuelrange": {
+        "name": "Reichweite – Kraftstofftank"
+      },
+      "vehicle_drivetrain_avgelectricrangeconsumption": {
+        "name": "Elektrische Reichweite – durchschnittlicher Energieverbrauch"
+      },
+      "vehicle_drivetrain_electricengine_hvsmaxenergyabsolute": {
+        "name": "Maximale Energie der Hochvoltbatterie"
+      },
+      "vehicle_drivetrain_electricengine_kombiremainingelectricrange": {
+        "name": "Elektrische Reichweite – Restreichweite"
+      },
+      "vehicle_drivetrain_electricengine_remainingelectricrange": {
+        "name": "Elektrische Reichweite – Schätzung während des Ladens"
+      },
+      "vehicle_powertrain_electric_range_displaycontrol": {
+        "name": "Elektrische Reichweite – Anzeigesteuerung"
+      },
+      "vehicle_powertrain_electric_range_target": {
+        "name": "Elektrische Reichweite – Restreichweite (zielbasiert)"
+      },
+      "vehicle_cabin_seat_row1_driverside_cooling": {
+        "name": "Sitz – Belüftung (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_seat_row1_driverside_heating": {
+        "name": "Sitz – Heizung (vorne, Fahrerseite)"
+      },
+      "vehicle_cabin_seat_row1_passengerside_cooling": {
+        "name": "Sitz – Belüftung (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_seat_row1_passengerside_heating": {
+        "name": "Sitz – Heizung (vorne, Beifahrerseite)"
+      },
+      "vehicle_cabin_seat_row2_driverside_cooling": {
+        "name": "Sitz – Belüftung (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_seat_row2_driverside_heating": {
+        "name": "Sitz – Heizung (hinten, Fahrerseite)"
+      },
+      "vehicle_cabin_seat_row2_passengerside_cooling": {
+        "name": "Sitz – Belüftung (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_seat_row2_passengerside_heating": {
+        "name": "Sitz – Heizung (hinten, Beifahrerseite)"
+      },
+      "vehicle_cabin_seat_row3_driverside_cooling": {
+        "name": "Sitz – Belüftung (3. Sitzreihe, Fahrerseite)"
+      },
+      "vehicle_cabin_seat_row3_driverside_heating": {
+        "name": "Sitz – Heizung (3. Sitzreihe, Fahrerseite)"
+      },
+      "vehicle_cabin_seat_row3_passengerside_cooling": {
+        "name": "Sitz – Belüftung (3. Sitzreihe, Beifahrerseite)"
+      },
+      "vehicle_cabin_seat_row3_passengerside_heating": {
+        "name": "Sitz – Heizung (3. Sitzreihe, Beifahrerseite)"
+      },
+      "vehicle_servicedemand_defect_id": {
+        "name": "Service – Live-Diagnose"
+      },
+      "vehicle_sevice_preferredsevicepartner": {
+        "name": "Service – Bevorzugter Servicepartner"
+      },
+      "vehicle_status_checkcontrolmessages": {
+        "name": "Service – Check-Control-Meldungen"
+      },
+      "vehicle_status_conditionbasedservices": {
+        "name": "Service – Zustandsbasierte Wartung"
+      },
+      "vehicle_status_conditionbasedservices_brakefluid": {
+        "name": "Service – Bremsflüssigkeit"
+      },
+      "vehicle_status_conditionbasedservices_engineoil": {
+        "name": "Service – Motoröl"
+      },
+      "vehicle_status_conditionbasedservices_servicedue": {
+        "name": "Service fällig"
+      },
+      "vehicle_status_conditionbasedservices_statutoryinspection": {
+        "name": "Service – Hauptuntersuchung"
+      },
+      "vehicle_status_conditionbasedservices_vehiclecheck": {
+        "name": "Fahrzeug-Check"
+      },
+      "vehicle_status_conditionbasedservicesaveragedistanceperday": {
+        "name": "Service – Durchschnittliche Tagesstrecke (CBS)"
+      },
+      "vehicle_status_conditionbasedservicescount": {
+        "name": "Service – Anzahl CBS-Berichte"
+      },
+      "vehicle_status_servicedistance_next": {
+        "name": "Service – Strecke bis zum nächsten Service"
+      },
+      "vehicle_status_servicedistance_yellow": {
+        "name": "Service – Schwellwert für nächste Service-Strecke"
+      },
+      "vehicle_status_servicetime_huandauserviceyellow": {
+        "name": "Service – Schwellwert für Inspektionszeit"
+      },
+      "vehicle_status_servicetime_inspectiondatelegal": {
+        "name": "Service – Nächster Inspektionstermin"
+      },
+      "vehicle_status_servicetime_yellow": {
+        "name": "Service – Schwellwert für nächsten Servicezeitpunkt"
+      },
+      "vehicle_vehicle_avgspeed": {
+        "name": "Durchschnittsgeschwindigkeit"
+      },
+      "vehicle_vehicle_speedrange_lowerbound": {
+        "name": "Geschwindigkeit – Untere Geschwindigkeitsgrenze"
+      },
+      "vehicle_vehicle_speedrange_upperbound": {
+        "name": "Geschwindigkeit – Obere Geschwindigkeitsgrenze"
+      },
+      "vehicle_cabin_steeringwheel_heating": {
+        "name": "Lenkrad – Heizung"
+      },
+      "vehicle_cabin_sunroof_overallstatus": {
+        "name": "Gesamtstatus des Schiebedachs"
+      },
+      "vehicle_cabin_sunroof_relativeposition": {
+        "name": "Position des Schiebedachs"
+      },
+      "vehicle_cabin_sunroof_shade_position": {
+        "name": "Position des Schiebedach-Sonnenschutzes"
+      },
+      "vehicle_cabin_sunroof_status": {
+        "name": "Schiebedach geöffnet"
+      },
+      "vehicle_cabin_sunroof_tiltstatus": {
+        "name": "Kippstatus des Schiebedachs"
+      },
+      "vehicle_channel_teleservice_lastautomaticservicecalltime": {
+        "name": "TeleService – Zeitpunkt des automatischen Serviceanrufs"
+      },
+      "vehicle_channel_teleservice_lastbreakdowncalltime": {
+        "name": "TeleService – Zeitpunkt des Pannenanrufs"
+      },
+      "vehicle_channel_teleservice_lastmanualcalltime": {
+        "name": "TeleService – Zeitpunkt des manuellen Serviceanrufs"
+      },
+      "vehicle_channel_teleservice_lastteleservicereporttime": {
+        "name": "Zeitpunkt des TeleService-Berichts"
+      },
+      "vehicle_channel_teleservice_status": {
+        "name": "TeleService – Verfügbarkeitsstatus"
+      },
+      "vehicle_chassis_axle_row1_wheel_left_tire_pressure": {
+        "name": "Reifendruck (vorne links)"
+      },
+      "vehicle_chassis_axle_row1_wheel_left_tire_pressuretarget": {
+        "name": "Reifendruck-Sollwert (vorne links)"
+      },
+      "vehicle_chassis_axle_row1_wheel_left_tire_temperature": {
+        "name": "Reifentemperatur (vorne links)"
+      },
+      "vehicle_chassis_axle_row1_wheel_right_tire_pressure": {
+        "name": "Reifendruck (vorne rechts)"
+      },
+      "vehicle_chassis_axle_row1_wheel_right_tire_pressuretarget": {
+        "name": "Reifendruck-Sollwert (vorne rechts)"
+      },
+      "vehicle_chassis_axle_row1_wheel_right_tire_temperature": {
+        "name": "Reifentemperatur (vorne rechts)"
+      },
+      "vehicle_chassis_axle_row2_wheel_left_tire_pressure": {
+        "name": "Reifendruck (hinten links)"
+      },
+      "vehicle_chassis_axle_row2_wheel_left_tire_pressuretarget": {
+        "name": "Reifendruck-Sollwert (hinten links)"
+      },
+      "vehicle_chassis_axle_row2_wheel_left_tire_temperature": {
+        "name": "Reifentemperatur (hinten links)"
+      },
+      "vehicle_chassis_axle_row2_wheel_right_tire_pressure": {
+        "name": "Reifendruck (hinten rechts)"
+      },
+      "vehicle_chassis_axle_row2_wheel_right_tire_pressuretarget": {
+        "name": "Reifendruck-Sollwert (hinten rechts)"
+      },
+      "vehicle_chassis_axle_row2_wheel_right_tire_temperature": {
+        "name": "Reifentemperatur (hinten rechts)"
+      },
+      "vehicle_chassis_axle_wheel_tire_diagnosis": {
+        "name": "Reifendiagnosedaten"
+      },
+      "vehicle_trip_segment_accumulated_acceleration_starsaverage": {
+        "name": "Fahrt – Fahrstil (Beschleunigung)"
+      },
+      "vehicle_trip_segment_accumulated_chassis_brake_starsaverage": {
+        "name": "Fahrt – Fahrstil (Vorausschau)"
+      },
+      "vehicle_trip_segment_accumulated_drivetrain_electricengine_energyconsumptioncomfort": {
+        "name": "Fahrt – Energieverbrauch (Komfortmodus)"
+      },
+      "vehicle_trip_segment_accumulated_drivetrain_transmission_setting_fractiondriveecopro": {
+        "name": "Fahrt – Anteil ECO-PRO-Modus"
+      },
+      "vehicle_trip_segment_accumulated_drivetrain_transmission_setting_fractiondriveecoproplus": {
+        "name": "Fahrt – Anteil ECO-PRO-Plus-Modus"
+      },
+      "vehicle_trip_segment_accumulated_drivetrain_transmission_setting_fractiondriveelectric": {
+        "name": "Fahrt – Elektrischer Fahranteil"
+      },
+      "vehicle_trip_segment_end_drivetrain_batterymanagement_hvsoc": {
+        "name": "Ladezustand am Ende der Fahrt"
+      },
+      "vehicle_trip_segment_end_time": {
+        "name": "Zeitpunkt der letzten Fahrt"
+      },
+      "vehicle_trip_segment_end_travelleddistance": {
+        "name": "Strecke der letzten Fahrt"
+      },
+      "vehicle_vehicle_averageweeklydistancelongterm": {
+        "name": "Durchschnittliche Wochenstrecke (langfristig)"
+      },
+      "vehicle_vehicle_averageweeklydistanceshortterm": {
+        "name": "Durchschnittliche Wochenstrecke"
+      },
+      "vehicle_body_trunk_door_isopen": {
+        "name": "Heckklappe – Türstatus"
+      },
+      "vehicle_body_trunk_islocked": {
+        "name": "Verriegelungsstatus der Heckklappe"
+      },
+      "vehicle_body_trunk_isopen": {
+        "name": "Heckklappenstatus"
+      },
+      "vehicle_body_trunk_left_door_isopen": {
+        "name": "Heckklappe – Türstatus (links)"
+      },
+      "vehicle_body_trunk_lower_door_isopen": {
+        "name": "Heckklappe – Türstatus (unten)"
+      },
+      "vehicle_body_trunk_right_door_isopen": {
+        "name": "Heckklappe – Türstatus (rechts)"
+      },
+      "vehicle_body_trunk_upper_door_isopen": {
+        "name": "Heckklappe – Türstatus (oben)"
+      },
+      "vehicle_body_trunk_window_isopen": {
+        "name": "Status der Heckklappenscheibe"
+      },
+      "vehicle_body_lights_isrunningon": {
+        "name": "Fahrzeug – Lichtstatus"
+      },
+      "vehicle_drivetrain_engine_isactive": {
+        "name": "Fahrzeug – Zündungsstatus"
+      },
+      "vehicle_drivetrain_engine_isignitionon": {
+        "name": "Fahrzeug – Motorstatus"
+      },
+      "vehicle_drivetrain_internalcombustionengine_engine_ect": {
+        "name": "Fahrzeug – Kühlmitteltemperatur"
+      },
+      "vehicle_ismoving": {
+        "name": "Fahrzeug – Bewegungsstatus"
+      },
+      "vehicle_vehicle_avgauxpower": {
+        "name": "Leistung der Nebenverbraucher"
+      },
+      "vehicle_vehicle_deepsleepmodeactive": {
+        "name": "Fahrzeug – Tiefschlafmodus"
+      },
+      "vehicle_vehicle_travelleddistance": {
+        "name": "Kilometerstand des Fahrzeugs"
+      },
+      "vehicle_cabin_infotainment_displayunit_distance": {
+        "name": "Fahrzeug – Anzeigeeinheit (Entfernung)"
+      },
+      "vehicle_cabin_infotainment_hmi_distanceunit": {
+        "name": "Fahrzeug – Entfernungseinheit"
+      },
+      "vehicle_cabin_infotainment_ismobilephoneconnected": {
+        "name": "Fahrzeug – Mobiltelefon-Verbindungsstatus"
+      },
+      "vehicle_channel_ista_obfcm_lasttransmissionstatus": {
+        "name": "Status der letzten OBFCM-Übertragung"
+      },
+      "vehicle_channel_ngtp_timevehicle": {
+        "name": "Fahrzeug – Uhrzeit im Fahrzeug"
+      },
+      "vehicle_electroniccontrolunit_diagnostictroublecodes_raw": {
+        "name": "Fahrzeug – Fehlerspeicher"
+      },
+      "vehicle_extras_optionalequipment_code": {
+        "name": "Fahrzeug – Sonderausstattung"
+      },
+      "vehicle_look_image": {
+        "name": "Fahrzeug – Bild"
+      },
+      "vehicle_sim_status": {
+        "name": "Fahrzeug – SIM-Aktivierungsstatus"
+      },
+      "vehicle_vehicle_timesetting": {
+        "name": "Fahrzeug – Zeitzoneneinstellung"
+      },
+      "vehicle_vehicleidentification_basicvehicledata": {
+        "name": "Fahrzeug – Fahrzeuggrunddaten"
+      },
+      "vehicle_cabin_window_row1_driver_status": {
+        "name": "Fenster vorne, Fahrerseite geöffnet"
+      },
+      "vehicle_cabin_window_row1_passenger_status": {
+        "name": "Fenster vorne, Beifahrerseite geöffnet"
+      },
+      "vehicle_cabin_window_row2_driver_status": {
+        "name": "Fenster hinten, Fahrerseite geöffnet"
+      },
+      "vehicle_cabin_window_row2_passenger_status": {
+        "name": "Fenster hinten, Beifahrerseite geöffnet"
+      },
+      "vehicle_predicted_soc": {
+        "name": "Hochvoltbatterie – Prognostizierter Ladezustand"
+      },
+      "vehicle_magic_soc": {
+        "name": "Magic-SOC-Prognose"
+      },
+      "vehicle_manual_battery_capacity": {
+        "name": "Manuelle Kapazität der Hochvoltbatterie"
+      },
+      "vehicle_powertrain_electric_battery_charging_authenticationstatus": {
+        "name": "Hochvoltbatterie – Ladeauthentifizierungsstatus"
+      }
+    }
   }
 }
