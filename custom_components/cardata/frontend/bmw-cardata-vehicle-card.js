@@ -22,9 +22,11 @@ const boolConfig = (cfg, key, fallback) => {
 };
 
 const normalizeState = (stateObj) => {
-  const raw = stateObj?.state;
-  if (raw === undefined || raw === null) return "";
-  if (raw === "unknown" || raw === "unavailable") return "";
+  const state = stateObj?.state;
+  if (state === undefined || state === null) return "";
+  if (state === "unknown" || state === "unavailable") return "";
+  // Keep the card's existing vocabulary when sensor states are normalized.
+  const raw = stateObj.attributes?.raw_value ?? state;
   return String(raw).trim().toLowerCase();
 };
 

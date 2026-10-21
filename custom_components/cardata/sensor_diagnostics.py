@@ -42,6 +42,7 @@ from homeassistant.util import dt as dt_util
 from .const import DOMAIN
 from .coordinator import CardataCoordinator
 from .entity import CardataSensorEntity
+from .state_translations import normalize_sensor_state
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -87,6 +88,9 @@ class CardataDiagnosticsSensor(SensorEntity, RestoreEntity):
         self._stream = stream_manager
         self._entry_id = entry_id
         self._sensor_type = sensor_type
+        self._normalize_states = sensor_type == "connection_status" and getattr(
+            coordinator, "normalize_sensor_states", False
+        )
         self._unsubscribe: Callable[[], None] | None = None
 
         # Configure based on sensor type
@@ -106,7 +110,7 @@ class CardataDiagnosticsSensor(SensorEntity, RestoreEntity):
             suffix = sensor_type
 
         if sensor_type in ("last_message", "last_telematic_api", "connection_status"):
-            self._attr_translation_key = sensor_type
+            self._attr_translation_key = sensor_type + ("_normalized" if self._normalize_states else "")
             del self._attr_name
 
         self._attr_unique_id = f"{entry_id}_diagnostics_{suffix}"
@@ -125,6 +129,8 @@ class CardataDiagnosticsSensor(SensorEntity, RestoreEntity):
         """Return extra state attributes."""
         if self._sensor_type == "connection_status":
             attrs = dict(self._stream.debug_info)
+            if self._normalize_states and self._attr_native_value is not None:
+                attrs["raw_value"] = self._attr_native_value
             if self._coordinator.last_disconnect_reason:
                 attrs["last_disconnect_reason"] = self._coordinator.last_disconnect_reason
             # Expose evicted descriptors count for diagnostics visibility
@@ -204,6 +210,8 @@ class CardataDiagnosticsSensor(SensorEntity, RestoreEntity):
     @property
     def native_value(self) -> datetime | str | None:
         """Return native value."""
+        if self._normalize_states:
+            return normalize_sensor_state(self._sensor_type, self._attr_native_value)
         return self._attr_native_value
 
 
@@ -216,7 +224,17 @@ class CardataVehicleMetadataSensor(CardataSensorEntity, RestoreEntity, SensorEnt
 
     def __init__(self, coordinator: CardataCoordinator, vin: str) -> None:
         super().__init__(coordinator, vin, "diagnostics_vehicle_metadata")
+        self._normalize_states = getattr(coordinator, "normalize_sensor_states", False)
+        if self._normalize_states:
+            self._attr_translation_key += "_normalized"
         self._unsubscribe: Callable[[], None] | None = None
+
+    @property
+    def native_value(self) -> str | None:
+        """Expose metadata availability with opt-in state translations."""
+        if self._normalize_states:
+            return normalize_sensor_state(self._descriptor, self._attr_native_value)
+        return self._attr_native_value
 
     async def async_added_to_hass(self) -> None:
         """Restore state and subscribe to updates."""
@@ -271,6 +289,8 @@ class CardataVehicleMetadataSensor(CardataSensorEntity, RestoreEntity, SensorEnt
         """Return all vehicle metadata as attributes."""
         metadata = self._coordinator.device_metadata.get(self._vin, {})
         attrs = {}
+        if self._normalize_states and self._attr_native_value is not None:
+            attrs["raw_value"] = self._attr_native_value
 
         if extra := metadata.get("extra_attributes"):
             attrs["vehicle_basic_data"] = dict(extra)

@@ -191,6 +191,7 @@ OPTION_ENABLE_TYRE_DIAGNOSIS = "enable_tyre_diagnosis"
 OPTION_ENABLE_TRIP_POLL = "enable_trip_end_polling"
 OPTION_TRIP_POLL_COOLDOWN = "trip_poll_cooldown_minutes"
 OPTION_ENABLE_EXTERNAL_POWER = "enable_external_power_injection"
+OPTION_NORMALIZE_SENSOR_STATES = "normalize_sensor_states"
 
 # Freshness window for externally injected charging power. While a local
 # injection has arrived within this many seconds, BMW-sourced V×A and

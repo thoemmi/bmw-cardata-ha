@@ -100,6 +100,7 @@ class CardataCoordinator:
     device_metadata: dict[str, dict[str, Any]] = field(default_factory=dict)
     last_message_at: datetime | None = None
     last_telematic_api_at: datetime | None = None
+    normalize_sensor_states: bool = False
     connection_status: str = "connecting"
     last_disconnect_reason: str | None = None
     diagnostic_interval: int = DIAGNOSTIC_LOG_INTERVAL

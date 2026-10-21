@@ -55,6 +55,7 @@ from .const import (
     OPTION_ENABLE_MAGIC_SOC,
     OPTION_ENABLE_TRIP_POLL,
     OPTION_ENABLE_TYRE_DIAGNOSIS,
+    OPTION_NORMALIZE_SENSOR_STATES,
     OPTION_TRIP_POLL_COOLDOWN,
     VEHICLE_METADATA,
 )
@@ -67,8 +68,10 @@ class CardataOptionsFlowHandler(config_entries.OptionsFlow):
     def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
         self._config_entry = config_entry
         self._reauth_client_id: str | None = None
+        self._pending_settings: dict[str, Any] | None = None
 
     async def async_step_init(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
+        self._pending_settings = None
         return self.async_show_menu(
             step_id="init",
             menu_options={
@@ -146,27 +149,9 @@ class CardataOptionsFlowHandler(config_entries.OptionsFlow):
     # -- Settings --------------------------------------------------------------
 
     async def async_step_action_settings(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
+        self._pending_settings = None
         if user_input is not None:
-            from homeassistant.helpers import entity_registry as er
-
-            entity_reg = er.async_get(self.hass)
-
-            # Remove entities for features being disabled
-            toggles = [
-                (OPTION_ENABLE_MAGIC_SOC, ("_vehicle.magic_soc", "_reset_consumption_learning")),
-                (OPTION_ENABLE_CHARGING_HISTORY, ("_diagnostics_charging_history", f"_{CHARGING_ENERGY_DESCRIPTOR}")),
-                (OPTION_ENABLE_TYRE_DIAGNOSIS, ("_diagnostics_tyre_diagnosis",)),
-            ]
-            for option_key, suffixes in toggles:
-                was_enabled = self._config_entry.options.get(option_key, False)
-                now_enabled = user_input[option_key]
-                if was_enabled and not now_enabled:
-                    for entity in er.async_entries_for_config_entry(entity_reg, self._config_entry.entry_id):
-                        if entity.unique_id and any(entity.unique_id.endswith(s) for s in suffixes):
-                            _LOGGER.info("Removing entity %s (feature disabled)", entity.entity_id)
-                            entity_reg.async_remove(entity.entity_id)
-
-            # Validate cooldown
+            # Validate and stage all settings before applying any side effects.
             cooldown = user_input.get(OPTION_TRIP_POLL_COOLDOWN, DEFAULT_TRIP_POLL_COOLDOWN_MINUTES)
             if not isinstance(cooldown, int) or cooldown < 1:
                 cooldown = DEFAULT_TRIP_POLL_COOLDOWN_MINUTES
@@ -178,7 +163,13 @@ class CardataOptionsFlowHandler(config_entries.OptionsFlow):
             options[OPTION_ENABLE_TRIP_POLL] = user_input[OPTION_ENABLE_TRIP_POLL]
             options[OPTION_TRIP_POLL_COOLDOWN] = cooldown
             options[OPTION_ENABLE_EXTERNAL_POWER] = user_input[OPTION_ENABLE_EXTERNAL_POWER]
-            return self.async_create_entry(title="", data=options)
+            options[OPTION_NORMALIZE_SENSOR_STATES] = user_input.get(OPTION_NORMALIZE_SENSOR_STATES, False)
+            if options[OPTION_NORMALIZE_SENSOR_STATES] and not self._config_entry.options.get(
+                OPTION_NORMALIZE_SENSOR_STATES, False
+            ):
+                self._pending_settings = options
+                return self._show_confirm(step_id="confirm_state_normalization")
+            return self._save_settings(options)
 
         current_magic = self._config_entry.options.get(OPTION_ENABLE_MAGIC_SOC, False)
         current_ch = self._config_entry.options.get(OPTION_ENABLE_CHARGING_HISTORY, False)
@@ -186,6 +177,7 @@ class CardataOptionsFlowHandler(config_entries.OptionsFlow):
         current_trip = self._config_entry.options.get(OPTION_ENABLE_TRIP_POLL, True)
         current_cooldown = self._config_entry.options.get(OPTION_TRIP_POLL_COOLDOWN, DEFAULT_TRIP_POLL_COOLDOWN_MINUTES)
         current_ext_power = self._config_entry.options.get(OPTION_ENABLE_EXTERNAL_POWER, False)
+        current_normalize = self._config_entry.options.get(OPTION_NORMALIZE_SENSOR_STATES, False)
         return self.async_show_form(
             step_id="action_settings",
             data_schema=vol.Schema(
@@ -196,9 +188,42 @@ class CardataOptionsFlowHandler(config_entries.OptionsFlow):
                     vol.Optional(OPTION_ENABLE_TRIP_POLL, default=current_trip): bool,
                     vol.Optional(OPTION_TRIP_POLL_COOLDOWN, default=current_cooldown): int,
                     vol.Optional(OPTION_ENABLE_EXTERNAL_POWER, default=current_ext_power): bool,
+                    vol.Optional(OPTION_NORMALIZE_SENSOR_STATES, default=current_normalize): bool,
                 }
             ),
         )
+
+    async def async_step_confirm_state_normalization(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
+        """Require explicit consent before changing published sensor states."""
+        if self._pending_settings is None:
+            return await self.async_step_action_settings()
+        if user_input is None:
+            return self._show_confirm(step_id="confirm_state_normalization")
+        if user_input.get("confirm") is not True:
+            return self._show_confirm(step_id="confirm_state_normalization", errors={"confirm": "confirm"})
+        options = self._pending_settings
+        self._pending_settings = None
+        return self._save_settings(options)
+
+    def _save_settings(self, options: dict[str, Any]) -> ConfigFlowResult:
+        """Apply feature cleanup only once the complete settings are accepted."""
+        from homeassistant.helpers import entity_registry as er
+
+        entity_reg = er.async_get(self.hass)
+        toggles = [
+            (OPTION_ENABLE_MAGIC_SOC, ("_vehicle.magic_soc", "_reset_consumption_learning")),
+            (OPTION_ENABLE_CHARGING_HISTORY, ("_diagnostics_charging_history", f"_{CHARGING_ENERGY_DESCRIPTOR}")),
+            (OPTION_ENABLE_TYRE_DIAGNOSIS, ("_diagnostics_tyre_diagnosis",)),
+        ]
+        for option_key, suffixes in toggles:
+            if self._config_entry.options.get(option_key, False) and not options[option_key]:
+                for entity in er.async_entries_for_config_entry(entity_reg, self._config_entry.entry_id):
+                    if entity.unique_id and any(entity.unique_id.endswith(s) for s in suffixes):
+                        _LOGGER.info("Removing entity %s (feature disabled)", entity.entity_id)
+                        entity_reg.async_remove(entity.entity_id)
+        return self.async_create_entry(title="", data=options)
 
     # -- MQTT Broker -----------------------------------------------------------
 

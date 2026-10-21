@@ -97,6 +97,7 @@ from .sensor_helpers import (
     map_unit_to_ha,
     validate_restored_state,
 )
+from .state_translations import NORMALIZED_SENSOR_STATES, normalize_sensor_state
 from .utils import redact_vin
 
 _LOGGER = logging.getLogger(__name__)
@@ -123,6 +124,11 @@ class CardataSensor(CardataSensorEntity, RestoreEntity, SensorEntity):
         super().__init__(coordinator, vin, descriptor)
         self._unsubscribe: Callable[[], None] | None = None
         self._published_attributes: dict[str, Any] | None = None
+        self._normalize_states = (
+            getattr(coordinator, "normalize_sensor_states", False) and descriptor in NORMALIZED_SENSOR_STATES
+        )
+        if self._normalize_states:
+            self._attr_translation_key += "_normalized"
 
         # create Raw data gps Sensors but hidden
         if descriptor in (
@@ -148,6 +154,13 @@ class CardataSensor(CardataSensorEntity, RestoreEntity, SensorEntity):
         if state_class:
             self._attr_state_class = state_class
 
+    @property
+    def native_value(self) -> float | int | str | None:
+        """Normalize only the published value, preserving coordinator data."""
+        if self._normalize_states:
+            return normalize_sensor_state(self._descriptor, self._attr_native_value)
+        return self._attr_native_value
+
     async def async_added_to_hass(self) -> None:
         """Restore state and subscribe to updates."""
         await super().async_added_to_hass()
@@ -163,7 +176,12 @@ class CardataSensor(CardataSensorEntity, RestoreEntity, SensorEntity):
             last_state = await self.async_get_last_state()
             if last_state and last_state.state not in ("unknown", "unavailable"):
                 unit = last_state.attributes.get("unit_of_measurement")
-                validated_state = validate_restored_state(last_state.state, unit, self._descriptor)
+                # A previous opt-in run stored the raw code alongside the
+                # published state. Restore that code even when opting out.
+                restored_value = last_state.state
+                if self._descriptor in NORMALIZED_SENSOR_STATES:
+                    restored_value = last_state.attributes.get("raw_value", restored_value)
+                validated_state = validate_restored_state(restored_value, unit, self._descriptor)
                 if validated_state is None:
                     # Invalid restored state - skip restoration
                     last_state = None
@@ -386,6 +404,8 @@ class CardataSensor(CardataSensorEntity, RestoreEntity, SensorEntity):
     def extra_state_attributes(self) -> dict[str, Any]:
         """Return extra state attributes, with Magic SOC prediction info."""
         attrs = super().extra_state_attributes or {}
+        if self._normalize_states and self._attr_native_value is not None:
+            attrs["raw_value"] = self._attr_native_value
         if self._descriptor == MAGIC_SOC_DESCRIPTOR:
             attrs.update(self._coordinator.get_magic_soc_attributes(self._vin))
         return attrs

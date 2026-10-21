@@ -24,6 +24,14 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install homeassistant pytest pytest-asyncio pytest-homeassistant-custom-component paho-mqtt
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Check vehicle card state compatibility
+        run: node --test tests/test_vehicle_card_states.cjs
+
       # Named individually rather than running the whole directory: the stream
       # and coordinator tests still call a pre-refactor API and fail, so a bare
       # "pytest tests/" would be red from the start. Add files here as they are
@@ -31,4 +39,4 @@ jobs:
       - name: Run unit and mocked setup tests
         env:
           PYTHONPATH: "."
-        run: pytest -q tests/test_charging_history_restore.py tests/test_entity_translations.py tests/test_config_flow.py tests/test_soc_wiring.py tests/test_soc_phase_inference.py tests/test_opening_binary_sensors.py tests/test_sensor_classes.py tests/test_charging_energy.py tests/test_mileage_guard.py tests/test_button_restore.py tests/test_number_capacity.py tests/test_stream_retry.py tests/test_container_id.py tests/test_condition_based_services.py tests/test_fault_memory.py
+        run: pytest -q tests/test_charging_history_restore.py tests/test_options_state_normalization.py tests/test_entity_translations.py tests/test_config_flow.py tests/test_soc_wiring.py tests/test_soc_phase_inference.py tests/test_opening_binary_sensors.py tests/test_sensor_classes.py tests/test_charging_energy.py tests/test_mileage_guard.py tests/test_button_restore.py tests/test_number_capacity.py tests/test_stream_retry.py tests/test_container_id.py tests/test_condition_based_services.py tests/test_fault_memory.py

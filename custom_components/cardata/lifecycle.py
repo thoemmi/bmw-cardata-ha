@@ -76,6 +76,7 @@ from .const import (
     OPTION_ENABLE_TRIP_POLL,
     OPTION_ENABLE_TYRE_DIAGNOSIS,
     OPTION_MQTT_KEEPALIVE,
+    OPTION_NORMALIZE_SENSOR_STATES,
     OPTION_TRIP_POLL_COOLDOWN,
     SOC_LEARNING_STORAGE_KEY,
     SOC_LEARNING_STORAGE_VERSION,
@@ -222,6 +223,7 @@ async def async_setup_cardata(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         # Set up coordinator
         coordinator = CardataCoordinator(hass=hass, entry_id=entry.entry_id)
         coordinator.diagnostic_interval = diagnostic_interval
+        coordinator.normalize_sensor_states = bool(options.get(OPTION_NORMALIZE_SENSOR_STATES, False))
         coordinator.enable_magic_soc = bool(options.get(OPTION_ENABLE_MAGIC_SOC, False))
         coordinator.enable_charging_history = bool(options.get(OPTION_ENABLE_CHARGING_HISTORY, False))
         coordinator.enable_tyre_diagnosis = bool(options.get(OPTION_ENABLE_TYRE_DIAGNOSIS, False))

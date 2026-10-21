@@ -38,14 +38,16 @@
           "enable_tyre_diagnosis": "Reifendiagnose aktivieren (tägliche API-Abfrage)",
           "enable_trip_end_polling": "Fahrtende-Abfrage aktivieren",
           "trip_poll_cooldown_minutes": "Fahrtende-Abfrage Abklingzeit (Minuten)",
-          "enable_external_power_injection": "Externen Leistungsmesser für das Laden verwenden"
+          "enable_external_power_injection": "Externen Leistungsmesser für das Laden verwenden",
+          "normalize_sensor_states": "Übersetzbare Sensorzustände verwenden"
         },
         "data_description": {
           "enable_charging_history": "Ruft einmal täglich den Verlauf der Ladevorgänge von BMW ab. Verbraucht 1 zusätzlichen API-Aufruf pro Fahrzeug und Tag aus Ihrem Tageskontingent von 50 Aufrufen.",
           "enable_tyre_diagnosis": "Ruft einmal täglich Daten zu Reifenzustand und Verschleiß von BMW ab. Verbraucht 1 zusätzlichen API-Aufruf pro Fahrzeug und Tag aus Ihrem Tageskontingent von 50 Aufrufen.",
           "enable_trip_end_polling": "Wenn aktiviert, wird jedes Mal, wenn das Fahrzeug anhält, sofort eine API-Abfrage ausgelöst. Deaktivieren Sie dies, wenn Sie viele kurze Fahrten machen und das tägliche API-Limit erreichen. Die geplante Abfrage läuft davon unabhängig weiter.",
           "trip_poll_cooldown_minutes": "Mindestwartezeit zwischen Fahrtende-Abfragen für dasselbe Fahrzeug (Standard: 10). Erhöhen Sie den Wert, um bei häufigen Kurzfahrten API-Aufrufe zu sparen.",
-          "enable_external_power_injection": "Erlaubt einer Automatisierung, die lokal gemessene Ladeleistung über den Dienst cardata.update_charging_power an die SOC-Vorhersage zu senden. Solange frische lokale Messwerte eintreffen, wird der von BMW stammende V×A-Wert unterdrückt. Lassen Sie dies deaktiviert, sofern Sie keinen intelligenten Zähler betreiben und ihn angebunden haben."
+          "enable_external_power_injection": "Erlaubt einer Automatisierung, die lokal gemessene Ladeleistung über den Dienst cardata.update_charging_power an die SOC-Vorhersage zu senden. Solange frische lokale Messwerte eintreffen, wird der von BMW stammende V×A-Wert unterdrückt. Lassen Sie dies deaktiviert, sofern Sie keinen intelligenten Zähler betreiben und ihn angebunden haben.",
+          "normalize_sensor_states": "Wandelt bekannte BMW-Zustandswerte in standardisierte Werte um und ermöglicht deren übersetzte Anzeige. Automationen und Templates müssen gegebenenfalls angepasst werden. Beispiel: PRICE_OPTIMIZED wird zu price_optimized. Standardmäßig ausgeschaltet."
         }
       },
       "action_mqtt_broker": {
@@ -68,6 +70,13 @@
           "custom_mqtt_password": "Leer lassen für anonymen Zugang.",
           "custom_mqtt_tls": "Aus = unverschlüsselt (TCP), TLS = verifiziertes Zertifikat, TLS (selbstsigniert) = Zertifikatsprüfung überspringen.",
           "custom_mqtt_topic_prefix": "Das Bridge-Topic-Präfix. Nachrichten werden unter '{prefix}{vin}' erwartet. Standard: bmw/"
+        }
+      },
+      "confirm_state_normalization": {
+        "title": "Änderung der Sensorzustände bestätigen",
+        "description": "Diese Änderung gilt für alle betroffenen Sensoren dieses Integrationseintrags. Ihre technischen Zustände ändern sich, zum Beispiel von PRICE_OPTIMIZED zu price_optimized. Passen Sie bestehende Automationen und Templates vor der Aktivierung an. Entity-IDs und eigene Namen bleiben erhalten. Der BMW-Originalwert steht zusätzlich im Attribut raw_value. Beim Ausschalten gelten wieder die ursprünglichen Zustände; die Historie wird nicht umgeschrieben.",
+        "data": {
+          "confirm": "Ich habe die Auswirkungen auf Automationen und Templates geprüft und möchte die normalisierten Zustände aktivieren."
         }
       }
     },
@@ -1025,6 +1034,1341 @@
       },
       "vehicle_powertrain_electric_battery_charging_authenticationstatus": {
         "name": "Hochvoltbatterie – Ladeauthentifizierungsstatus"
+      },
+      "vehicle_vehicle_antitheftalarmsystem_alarm_armstatus_normalized": {
+        "name": "Scharfschaltungsstatus der Alarmanlage",
+        "state": {
+          "unarmed": "Nicht aktiviert",
+          "doors_only": "Nur Türen",
+          "doors_tilt_cabin": "Türen, Neigung und Innenraum"
+        }
+      },
+      "vehicle_vehicle_antitheftalarmsystem_alarm_ison_normalized": {
+        "name": "Alarm aktiv",
+        "state": {
+          "true": "Alarm aktiv",
+          "false": "Alarm inaktiv"
+        }
+      },
+      "vehicle_powertrain_electric_battery_bidirectionalcharging_availability_normalized": {
+        "name": "Hochvoltbatterie – bidirektionales Laden verfügbar",
+        "state": {
+          "available": "Verfügbar",
+          "not_available": "Nicht verfügbar",
+          "disabled_malibu": "Durch Malibu deaktiviert",
+          "disabled_hvs": "Durch Hochvoltsystem deaktiviert",
+          "bpt_and_imo_disabled": "BPT und IMO deaktiviert",
+          "bpt_only_for_emergency_power_supply": "BPT nur für Notstromversorgung",
+          "disabled_imo_possible": "Deaktiviert; IMO möglich",
+          "disabled_long_term": "Langfristig deaktiviert"
+        }
+      },
+      "vehicle_powertrain_electric_battery_charging_aclimit_isactive_normalized": {
+        "name": "Hochvoltbatterie – Ladebegrenzung aktiv",
+        "state": {
+          "ac_limit_inactive": "AC-Ladebegrenzung inaktiv",
+          "ac_limit_active": "AC-Ladebegrenzung aktiv",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_powertrain_electric_battery_charging_acousticlimit_normalized": {
+        "name": "Hochvoltbatterie – Akustische Ladebegrenzung",
+        "state": {
+          "no_action": "Keine Aktion",
+          "automatic": "Automatisch",
+          "unlimited": "Unbegrenzt",
+          "limited": "Begrenzt"
+        }
+      },
+      "vehicle_powertrain_electric_battery_charging_batterycarepersisted_isactive_normalized": {
+        "name": "Hochvoltbatterie – Batteriepflege aktiv",
+        "state": {
+          "true": "Batterieschonung aktiv",
+          "false": "Batterieschonung inaktiv"
+        }
+      },
+      "vehicle_powertrain_electric_battery_charging_batterycarepersisted_ispreservingchargingmode_normalized": {
+        "name": "Hochvoltbatterie – Batteriepflegemodus",
+        "state": {
+          "true": "Laden zum spätestmöglichen Zeitpunkt aktiviert",
+          "false": "Laden zum spätestmöglichen Zeitpunkt deaktiviert"
+        }
+      },
+      "vehicle_powertrain_electric_battery_charging_batterycarepersisted_isreducedtargetsoe_normalized": {
+        "name": "Hochvoltbatterie – reduzierter Energiezielwert",
+        "state": {
+          "true": "Reduzierter SoE-Zielwert",
+          "false": "Standard-SoE-Zielwert"
+        }
+      },
+      "vehicle_powertrain_electric_battery_charging_dcchargingmodeactive_normalized": {
+        "name": "Hochvoltbatterie – DC-Lademodus",
+        "state": {
+          "efficient": "Effizient",
+          "standard": "Standard",
+          "performance": "Performance"
+        }
+      },
+      "vehicle_powertrain_electric_battery_charging_preferencesmartcharging_normalized": {
+        "name": "Hochvoltbatterie – Intelligentes Laden",
+        "state": {
+          "price_optimized": "Preisoptimiert",
+          "renewable_energey": "Erneuerbare Energien bevorzugen",
+          "co2_optimized": "CO₂-optimiert",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_powertrain_electric_battery_preconditioning_automaticmode_statusfeedback_normalized": {
+        "name": "Hochvoltbatterie – Status der automatischen Vorkonditionierung",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "temp_off": "Vorübergehend aus",
+          "status_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_powertrain_electric_battery_preconditioning_manualmode_statusfeedback_normalized": {
+        "name": "Hochvoltbatterie – Status der manuellen Vorkonditionierung",
+        "state": {
+          "off": "Aus",
+          "on_charge": "Beim Laden aktiv",
+          "on_drive": "Während der Fahrt aktiv",
+          "status_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_powertrain_electric_battery_preconditioning_state_normalized": {
+        "name": "Status der Vorkonditionierung der Hochvoltbatterie",
+        "state": {
+          "off": "Aus",
+          "on_legacy": "Ein (Legacy-Modus)",
+          "manual_on_charge": "Manuell beim Laden aktiv",
+          "automatic_on": "Automatisch aktiv",
+          "remote_on_charge": "Remote beim Laden aktiviert",
+          "remote_on_drive": "Remote während der Fahrt aktiviert",
+          "remote_off": "Remote deaktiviert",
+          "status_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_acrestriction_factor_normalized": {
+        "name": "Laden – AC-Begrenzungsfaktor",
+        "state": {
+          "maxcharging": "Maximales Laden",
+          "reducedcharging": "Reduziertes Laden",
+          "mincharging": "Minimales Laden"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_acrestriction_ischosen_normalized": {
+        "name": "Laden – AC-Begrenzung ausgewählt",
+        "state": {
+          "notchosen": "Nicht ausgewählt",
+          "chosen": "Ausgewählt",
+          "invalid": "Ungültig",
+          "maxcharging": "Maximales Laden",
+          "reducedcharging": "Reduziertes Laden",
+          "mincharging": "Minimales Laden"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_authentication_status_normalized": {
+        "name": "Laden – Authentifizierungsstatus",
+        "state": {
+          "authorization_successful": "Autorisierung erfolgreich",
+          "transport_layer_error": "Transportebenenfehler",
+          "high_level_communication_error": "Fehler bei der Kommunikation auf hoher Ebene",
+          "contract_service_not_supported_error": "Vertragsdienst nicht unterstützt",
+          "authorization_error": "Autorisierungsfehler",
+          "authorization_timeout": "Zeitüberschreitung bei der Autorisierung",
+          "nvm_read_certificate_error": "Fehler beim Lesen des Zertifikats",
+          "certificate_update_error": "Fehler beim Aktualisieren des Zertifikats",
+          "xml_security_error": "XML-Sicherheitsfehler"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_chargingmode_normalized": {
+        "name": "Laden – Lademodus",
+        "state": {
+          "normal_prognose_based": "Prognosebasiert",
+          "step_based": "Schrittbasiert",
+          "plc_mode": "PLC-Modus"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_connectiontype_normalized": {
+        "name": "Laden – Ladeanschlusstyp",
+        "state": {
+          "conductive": "Konduktives Laden",
+          "inductive": "Induktives Laden",
+          "signal_invalid": "Ungültiges Signal"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_connectorstatus_normalized": {
+        "name": "Laden – Status des Ladesteckers",
+        "state": {
+          "connected": "Verbunden",
+          "disconnected": "Getrennt",
+          "error": "Fehler"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_hvpmfinishreason_normalized": {
+        "name": "Laden – Grund des Ladeendes",
+        "state": {
+          "status_unknown": "Unbekannt",
+          "charging_goal_reached": "Ladeziel erreicht",
+          "end_requested_by_driver": "Laden auf Fahrerwunsch beendet",
+          "connector_removed": "Ladestecker entfernt",
+          "powergrid_failed": "Störung im Stromnetz",
+          "hv_system_failure": "Fehler im Hochvoltsystem",
+          "charging_station_failure": "Fehler an der Ladestation",
+          "parking_lock_failed": "Fehler an der Parksperre",
+          "no_parking_lock": "Parksperre nicht eingelegt",
+          "signal_invalid": "Ungültiges Signal",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_hvstatus_normalized": {
+        "name": "Laden – Status des Hochvoltsystems",
+        "state": {
+          "invalid": "Ungültig",
+          "charging": "Laden",
+          "error": "Fehler",
+          "not_charging": "Lädt nicht",
+          "waiting_for_charging": "Wartet auf Ladevorgang",
+          "finished_fully_charged": "Vollständig geladen",
+          "finished_not_full": "Laden beendet, nicht vollständig geladen"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_isimmediatechargingsystemreason_normalized": {
+        "name": "Laden – Grund für sofortiges Laden",
+        "state": {
+          "true": "Systemübersteuerung aktiv",
+          "false": "Keine Systemübersteuerung"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_issingleimmediatecharging_normalized": {
+        "name": "Laden – Status des sofortigen Ladens",
+        "state": {
+          "direct_chg_once_not_active": "Einmaliges direktes Laden inaktiv",
+          "direct_chg_once_active": "Einmaliges direktes Laden aktiv",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_lastchargingreason_normalized": {
+        "name": "Laden – Grund des letzten Ladevorgangs",
+        "state": {
+          "charging_goal_reached": "Ladeziel erreicht",
+          "end_requested_by_driver": "Laden auf Fahrerwunsch beendet",
+          "connector_removed": "Ladestecker entfernt",
+          "powergrid_failed": "Störung im Stromnetz",
+          "hv_system_failure": "Fehler im Hochvoltsystem",
+          "charging_station_failure": "Fehler an der Ladestation",
+          "parking_lock_failed": "Fehler an der Parksperre",
+          "no_parking_lock": "Parksperre nicht eingelegt",
+          "invalid": "Ungültig",
+          "na": "Nicht verfügbar"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_lastchargingresult_normalized": {
+        "name": "Laden – Ergebnis des letzten Ladevorgangs",
+        "state": {
+          "success": "Erfolgreich",
+          "failed": "Fehlgeschlagen",
+          "status_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_method_normalized": {
+        "name": "Laden – Lademethode",
+        "state": {
+          "ac_type1_plug": "AC, Typ-1-Stecker",
+          "ac_type2_plug": "AC, Typ-2-Stecker",
+          "nocharging": "Lädt nicht"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_modedeviation_normalized": {
+        "name": "Laden – Abweichung vom Lademodus",
+        "state": {
+          "no_deviation": "Keine Abweichung",
+          "dc_dynamic_malibu": "Dynamisches DC-Laden (Malibu)",
+          "dc_dynamic_min_soe_protection": "Dynamisches DC-Laden (SoE-Mindestschutz)",
+          "immediate_charging_not_supported_by_evse": "Sofortladen von EVSE nicht unterstützt",
+          "immediate_charging_wake_up_limit_reached": "Aufweckgrenze für Sofortladen erreicht",
+          "immediate_charging": "Sofortladen",
+          "charging_timeslot": "Ladezeitfenster",
+          "charging_in_timeslot": "Laden im Zeitfenster",
+          "smart_charging": "Smart Charging",
+          "dc_dynamic": "Dynamisches DC-Laden",
+          "bidirectional_charging": "Bidirektionales Laden",
+          "no_action": "Keine Aktion",
+          "status_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_phasenumber_normalized": {
+        "name": "Laden – Ladephasen",
+        "state": {
+          "no_charging": "Lädt nicht",
+          "1_phases": "Einphasig",
+          "2_phases": "Zweiphasig",
+          "3_phases": "Dreiphasig",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_climatizationactive_normalized": {
+        "name": "Laden – Klimatisierung aktiv",
+        "state": {
+          "true": "Vorklimatisierung aktiv",
+          "false": "Vorklimatisierung inaktiv"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_isrcpconfigcomplete_normalized": {
+        "name": "Laden – RCP-Konfiguration vollständig",
+        "state": {
+          "true": "Vollständiges Ladeprofil",
+          "false": "Unvollständiges Ladeprofil"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_preference_normalized": {
+        "name": "Laden – Ladepräferenz",
+        "state": {
+          "charging_window": "Ladezeitfenster",
+          "smart_charging": "Smart Charging",
+          "no_preselection": "Keine Voreinstellung"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_settings_bidirectionalcharging_departuretimerelevant_normalized": {
+        "name": "Laden – Abfahrtszeit relevant",
+        "state": {
+          "true": "Abfahrtszeit relevant",
+          "false": "Abfahrtszeit nicht relevant"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_settings_bidirectionalcharging_dischargeallowed_normalized": {
+        "name": "Laden – Entladen zulässig",
+        "state": {
+          "true": "Entladen erlaubt",
+          "false": "Entladen nicht erlaubt"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_reasonchargingend_normalized": {
+        "name": "Laden – Ursache des Ladeendes",
+        "state": {
+          "no_charging_end_since_ipf_wakeup": "Seit dem IPF-Aufwecken kein Ladeende",
+          "customer_interaction_hmi_unplug_cable_once": "Kabel einmal über das Fahrzeugdisplay getrennt",
+          "customer_interaction_hmi_charging_target_reached": "Ladeziel über das Fahrzeugdisplay erreicht",
+          "customer_interaction_app_unplug_cable_once": "Kabel einmal über die App getrennt",
+          "customer_interaction_app_charging_target_reached": "Ladeziel über die App erreicht",
+          "customer_interaction_charging_stop_via_charging_stop_button_socket": "Laden über die Stopptaste an der Ladebuchse beendet",
+          "customer_interaction_ac_charging_stop_via_key": "AC-Laden per Schlüssel beendet",
+          "customer_interaction_ac_charging_stop_wallbox": "AC-Laden durch die Wallbox beendet",
+          "customer_interaction_ac_charging_stop_latch": "AC-Laden an der Ladeverriegelung beendet",
+          "hv_battery_fully_charged": "Hochvoltbatterie vollständig geladen",
+          "infrastructure_physical_limits_reached_target_soe_not_reachable": "Infrastrukturgrenze erreicht; Ziel-SoE nicht erreichbar",
+          "infrastructure_dc_ccs_evse_shutdown": "DC-CCS-Ladestation abgeschaltet",
+          "infrastructure_dc_gbt_cst_message": "Meldung der DC-GB/T-Ladestation",
+          "infrastructure_dc_ccs_static_pilot": "DC-CCS-Static-Pilot-Fehler",
+          "infrastructure_dc_ccs_communication_error_failed_response_code": "DC-CCS-Kommunikationsfehler: Antwortcode fehlgeschlagen",
+          "infrastructure_dc_ccs_communication_error": "DC-CCS-Kommunikationsfehler",
+          "infrastructure_no_energy_transfer": "Keine Energieübertragung durch die Infrastruktur",
+          "infrastructure_dc_ccs_precharge_error": "DC-CCS-Vorladefehler",
+          "infrastructure_dc_ccs_evse_malfunction_emergency_shutdown": "Störung der DC-CCS-Ladestation; Notabschaltung",
+          "infrastructure_station_not_compatible": "Ladestation nicht kompatibel",
+          "infrastructure_charge_readiness_timeout": "Zeitüberschreitung bei der Ladebereitschaft",
+          "infrastructure_ac_maximum_grid_error_reached": "AC-Netzfehlergrenze erreicht",
+          "infrastructure_dc_gbt_isolation_error_detected": "Isolationsfehler bei DC-GB/T erkannt",
+          "infrastructure_authentification_error": "Authentifizierungsfehler der Infrastruktur",
+          "vehicle_hv_battery_error": "Fehler der Hochvoltbatterie",
+          "vehicle_hv_battery_communication_error": "Kommunikationsfehler der Hochvoltbatterie",
+          "vehicle_dcdc_error": "Fehler des DC/DC-Wandlers",
+          "vehicle_plc_bootup_error": "Startfehler der Fahrzeug-PLC",
+          "vehicle_hv_battery_maximal_current_overshoot": "Maximalstrom der Hochvoltbatterie überschritten",
+          "vehicle_isolation_error": "Isolationsfehler am Fahrzeug",
+          "vehicle_maximum_temperature_charging_socket_overshoot": "Maximaltemperatur der Ladebuchse überschritten",
+          "vehicle_lt3_overshoot": "LT3-Grenze überschritten",
+          "vehicle_fusi_cable_lock_error": "Fehler der Fahrzeug-Ladekabelverriegelung",
+          "vehicle_plc_communication_not_possible": "Fahrzeug-PLC-Kommunikation nicht möglich",
+          "flexcharger_grid_error": "Netzfehler des FlexCharger",
+          "flexcharger_grid_temperature_error": "Netztemperaturfehler des FlexCharger",
+          "flexcharger_evse_temperature_error": "EVSE-Temperaturfehler des FlexCharger",
+          "flexcharger_evse_internal_error": "Interner EVSE-Fehler des FlexCharger",
+          "flexcharger_ac_dc_fault_current": "AC/DC-Fehlerstrom des FlexCharger",
+          "flexcharger_incorrect_reaction_time_pwm": "Ungültige PWM-Reaktionszeit des FlexCharger",
+          "flexcharger_charging_current_too_high": "Ladestrom des FlexCharger zu hoch",
+          "flexcharger_pe_fault": "Schutzleiterfehler des FlexCharger",
+          "infrastructure_inefficient_charging_low_power": "Ineffizientes Laden wegen zu geringer Infrastrukturleistung",
+          "vehicle_cable_locking_error": "Fehler der Fahrzeug-Kabelverriegelung",
+          "vehicle_configuration_error_400_v_800_v": "Konfigurationsfehler des Fahrzeugs (400 V/800 V)",
+          "infrastructure_no_ac_voltage": "Keine AC-Spannung durch die Infrastruktur",
+          "plug_and_charge_tls_error": "Plug-&-Charge-TLS-Fehler",
+          "plug_and_charge_contract_error": "Plug-&-Charge-Vertragsfehler",
+          "smart_charging_tariff_selection_invalid": "Tarifauswahl für Smart Charging ungültig",
+          "smart_charging_charging_profile_invalid": "Ladeprofil für Smart Charging ungültig",
+          "customer_interaction_ac_charging_stop_via_app": "AC-Laden über die App beendet",
+          "charging_paused": "Ladevorgang pausiert",
+          "discharge_not_possible_voltage_too_high": "Entladen nicht möglich: Spannung zu hoch",
+          "discharge_not_possible_soe_too_low": "Entladen nicht möglich: SoE zu niedrig",
+          "discharge_not_possible_internal_error": "Entladen nicht möglich: interner Fehler",
+          "discharge_not_possible_incompatible_adapter": "Entladen nicht möglich: Adapter inkompatibel",
+          "discharge_not_possible_incompatible_consumer": "Entladen nicht möglich: Verbraucher inkompatibel"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_routeoptimizedchargingstatus_normalized": {
+        "name": "Laden – Status des routenoptimierten Ladevorgangs",
+        "state": {
+          "route_optimized_charging_in_progress": "Routenoptimiertes Laden läuft",
+          "route_optimized_soc_target_reached": "Routenoptimiertes Ladeziel erreicht"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_status_normalized": {
+        "name": "Laden – Ladestatus",
+        "state": {
+          "manual_selection": "Manuelle Auswahl",
+          "automatic_selection": "Automatische Auswahl",
+          "automatic_selection_20": "Automatische Auswahl (20)",
+          "status_unknown": "Unbekannt",
+          "nocharging": "Lädt nicht",
+          "initialization": "Initialisierung",
+          "chargingactive": "Ladevorgang aktiv",
+          "chargingpaused": "Ladevorgang pausiert",
+          "chargingended": "Ladevorgang beendet",
+          "chargingerror": "Ladefehler",
+          "charging": "Laden",
+          "charging_active": "Ladevorgang aktiv",
+          "charging_in_progress": "Ladevorgang läuft"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_windowselection_normalized": {
+        "name": "Laden – Auswahl des Ladezeitfensters",
+        "state": {
+          "chosen": "Ausgewählt",
+          "notchosen": "Nicht ausgewählt",
+          "na": "Nicht verfügbar"
+        }
+      },
+      "vehicle_powertrain_electric_chargingduration_displaycontrol_normalized": {
+        "name": "Laden – Ladezeitanzeige",
+        "state": {
+          "no_display_time_for_charging": "Ladezeit nicht anzeigen",
+          "display_charging_duration": "Ladedauer anzeigen",
+          "no_display_charging_duration": "Ladedauer nicht anzeigen",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_powertrain_electric_departuretime_displaycontrol_normalized": {
+        "name": "Laden – Abfahrtszeitanzeige",
+        "state": {
+          "dont_display": "Nicht anzeigen",
+          "display_departure_time": "Abfahrtszeit anzeigen",
+          "display_departure_time_with_v2_xsoe": "Abfahrtszeit mit V2X-SoE anzeigen",
+          "status_unknown": "Unbekannt",
+          "no_display_departure_time": "Abfahrtszeit nicht anzeigen"
+        }
+      },
+      "vehicle_body_chargingport_combinedstatus_normalized": {
+        "name": "Ladeanschluss – Verbindungsstatus",
+        "state": {
+          "disconnected": "Getrennt",
+          "connected": "Verbunden",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_body_chargingport_dcstatus_normalized": {
+        "name": "Ladeanschluss – Status des DC-Ladesteckers",
+        "state": {
+          "disconnected": "Getrennt",
+          "connected": "Verbunden",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_body_chargingport_ishospitalityactive_normalized": {
+        "name": "Ladeanschluss – Verriegelung des Ladesteckers nach dem Laden",
+        "state": {
+          "hospitality_inactive": "Bleibt nach dem Laden verriegelt",
+          "hospitality_active": "Wird nach dem Laden automatisch entriegelt",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_body_chargingport_lockedstatus_normalized": {
+        "name": "Ladeanschluss – Verriegelungsstatus des Ladesteckers",
+        "state": {
+          "charging_cable_not_locked": "Ladekabel entriegelt",
+          "charging_cable_locked": "Ladekabel verriegelt",
+          "charging_cable_locking_error_detected": "Fehler beim Verriegeln des Ladekabels",
+          "status_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_body_chargingport_status_normalized": {
+        "name": "Ladeanschluss – Status des Ladesteckers",
+        "state": {
+          "connected": "Verbunden",
+          "disconnected": "Getrennt",
+          "invalid": "Ungültig",
+          "na": "Nicht verfügbar"
+        }
+      },
+      "vehicle_body_chargingport_statuscleartext_normalized": {
+        "name": "Ladeanschluss – Statusmeldung",
+        "state": {
+          "disconnected": "Getrennt",
+          "connected": "Verbunden"
+        }
+      },
+      "vehicle_body_flap_islocked_normalized": {
+        "name": "Ladeanschluss – Verriegelung der Ladeklappe",
+        "state": {
+          "flap_unlocked": "Ladeklappe entriegelt",
+          "flap_locked": "Ladeklappe verriegelt",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_body_flap_ispermanentlyunlocked_normalized": {
+        "name": "Ladeanschluss – Ladeklappe dauerhaft entriegelt",
+        "state": {
+          "no_action": "Keine Aktion",
+          "flap_unlocked": "Ladeklappe entriegelt",
+          "flap_locked": "Ladeklappe verriegelt",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_anyposition_flap_isautomaticopenandcloseactive_normalized": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (beliebige Position)",
+        "state": {
+          "true": "Automatisches Öffnen und Schließen aktiviert",
+          "false": "Automatisches Öffnen und Schließen deaktiviert"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_anyposition_flap_isopen_normalized": {
+        "name": "Ladeanschluss – Status der Ladeklappe (beliebige Position)",
+        "state": {
+          "true": "Offen",
+          "false": "Geschlossen"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_anyposition_isplugged_normalized": {
+        "name": "Ladeanschluss – Ladestecker verbunden (beliebige Position)",
+        "state": {
+          "true": "Eingesteckt",
+          "false": "Nicht eingesteckt"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontleft_flap_isautomaticopenandcloseactive_normalized": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (vorne links)",
+        "state": {
+          "true": "Automatisches Öffnen und Schließen aktiviert",
+          "false": "Automatisches Öffnen und Schließen deaktiviert"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontleft_flap_isopen_normalized": {
+        "name": "Ladeanschluss – Status der Ladeklappe (vorne links)",
+        "state": {
+          "true": "Offen",
+          "false": "Geschlossen"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontleft_isplugged_normalized": {
+        "name": "Ladeanschluss – Ladestecker verbunden (vorne links)",
+        "state": {
+          "true": "Eingesteckt",
+          "false": "Nicht eingesteckt"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontmiddle_flap_isautomaticopenandcloseactive_normalized": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (vorne Mitte)",
+        "state": {
+          "true": "Automatisches Öffnen und Schließen aktiviert",
+          "false": "Automatisches Öffnen und Schließen deaktiviert"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontmiddle_flap_isopen_normalized": {
+        "name": "Ladeanschluss – Status der Ladeklappe (vorne Mitte)",
+        "state": {
+          "true": "Offen",
+          "false": "Geschlossen"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontmiddle_isplugged_normalized": {
+        "name": "Ladeanschluss – Ladestecker verbunden (vorne Mitte)",
+        "state": {
+          "true": "Eingesteckt",
+          "false": "Nicht eingesteckt"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontright_flap_isautomaticopenandcloseactive_normalized": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (vorne rechts)",
+        "state": {
+          "true": "Automatisches Öffnen und Schließen aktiviert",
+          "false": "Automatisches Öffnen und Schließen deaktiviert"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontright_flap_isopen_normalized": {
+        "name": "Ladeanschluss – Status der Ladeklappe (vorne rechts)",
+        "state": {
+          "true": "Offen",
+          "false": "Geschlossen"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_frontright_isplugged_normalized": {
+        "name": "Ladeanschluss – Ladestecker verbunden (vorne rechts)",
+        "state": {
+          "true": "Eingesteckt",
+          "false": "Nicht eingesteckt"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearleft_flap_isautomaticopenandcloseactive_normalized": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (hinten links)",
+        "state": {
+          "true": "Automatisches Öffnen und Schließen aktiviert",
+          "false": "Automatisches Öffnen und Schließen deaktiviert"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearleft_flap_isopen_normalized": {
+        "name": "Ladeanschluss – Status der Ladeklappe (hinten links)",
+        "state": {
+          "true": "Offen",
+          "false": "Geschlossen"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearleft_isplugged_normalized": {
+        "name": "Ladeanschluss – Ladestecker verbunden (hinten links)",
+        "state": {
+          "true": "Eingesteckt",
+          "false": "Nicht eingesteckt"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearmiddle_flap_isautomaticopenandcloseactive_normalized": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (hinten Mitte)",
+        "state": {
+          "true": "Automatisches Öffnen und Schließen aktiviert",
+          "false": "Automatisches Öffnen und Schließen deaktiviert"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearmiddle_flap_isopen_normalized": {
+        "name": "Ladeanschluss – Status der Ladeklappe (hinten Mitte)",
+        "state": {
+          "true": "Offen",
+          "false": "Geschlossen"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearmiddle_isplugged_normalized": {
+        "name": "Ladeanschluss – Ladestecker verbunden (hinten Mitte)",
+        "state": {
+          "true": "Eingesteckt",
+          "false": "Nicht eingesteckt"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearright_flap_isautomaticopenandcloseactive_normalized": {
+        "name": "Ladeanschluss – Automatisches Öffnen/Schließen der Ladeklappe (hinten rechts)",
+        "state": {
+          "true": "Automatisches Öffnen und Schließen aktiviert",
+          "false": "Automatisches Öffnen und Schließen deaktiviert"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearright_flap_isopen_normalized": {
+        "name": "Ladeanschluss – Status der Ladeklappe (hinten rechts)",
+        "state": {
+          "true": "Offen",
+          "false": "Geschlossen"
+        }
+      },
+      "vehicle_powertrain_tractionbattery_charging_port_rearright_isplugged_normalized": {
+        "name": "Ladeanschluss – Ladestecker verbunden (hinten rechts)",
+        "state": {
+          "true": "Eingesteckt",
+          "false": "Nicht eingesteckt"
+        }
+      },
+      "vehicle_cabin_climate_timers_overwritetimer_action_normalized": {
+        "name": "Status des einmaligen Klimatisierungstimers",
+        "state": {
+          "activate": "Aktivieren",
+          "deactivate": "Deaktivieren",
+          "no_action": "Keine Aktion"
+        }
+      },
+      "vehicle_cabin_climate_timers_weekdaystimer1_action_normalized": {
+        "name": "Status des wöchentlichen Klimatisierungstimers 1",
+        "state": {
+          "activate": "Aktivieren",
+          "deactivate": "Deaktivieren",
+          "no_action": "Keine Aktion"
+        }
+      },
+      "vehicle_cabin_climate_timers_weekdaystimer2_action_normalized": {
+        "name": "Status des wöchentlichen Klimatisierungstimers 2",
+        "state": {
+          "activate": "Aktivieren",
+          "deactivate": "Deaktivieren",
+          "no_action": "Keine Aktion"
+        }
+      },
+      "vehicle_cabin_convertible_roofstatus_normalized": {
+        "name": "Cabrioverdeckstatus",
+        "state": {
+          "closedsecured": "Geschlossen, Fahrzeug gesichert",
+          "opensecured": "Offen, Fahrzeug gesichert",
+          "closed": "Geschlossen",
+          "open": "Offen",
+          "emergencylocked": "Im Notfall verriegelt",
+          "hardtopmounted": "Hardtop montiert",
+          "intermediateposition": "Zwischenposition",
+          "loadingposition": "Ladeposition",
+          "loadingpositionimmediate": "Sofortige Ladeposition",
+          "closed_secured": "Geschlossen, Fahrzeug gesichert"
+        }
+      },
+      "vehicle_cabin_door_row1_driver_isopen_normalized": {
+        "name": "Türstatus (vorne, Fahrerseite)",
+        "state": {
+          "open": "Offen",
+          "closed": "Geschlossen",
+          "invalid": "Ungültig",
+          "status_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_cabin_door_row1_passenger_isopen_normalized": {
+        "name": "Türstatus (vorne, Beifahrerseite)",
+        "state": {
+          "open": "Offen",
+          "closed": "Geschlossen",
+          "invalid": "Ungültig",
+          "status_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_cabin_door_row2_driver_isopen_normalized": {
+        "name": "Türstatus (hinten, Fahrerseite)",
+        "state": {
+          "open": "Offen",
+          "closed": "Geschlossen",
+          "invalid": "Ungültig",
+          "status_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_cabin_door_row2_passenger_isopen_normalized": {
+        "name": "Türstatus (hinten, Beifahrerseite)",
+        "state": {
+          "open": "Offen",
+          "closed": "Geschlossen",
+          "invalid": "Ungültig",
+          "status_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_cabin_door_lock_status_normalized": {
+        "name": "Türverriegelung",
+        "state": {
+          "secured": "Gesichert",
+          "unlocked": "Entriegelt",
+          "selective_locked": "Selektiv verriegelt",
+          "locked": "Verriegelt",
+          "invalid": "Ungültig",
+          "status_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_cabin_infotainment_navigation_currentlocation_fixstatus_normalized": {
+        "name": "GPS-Fixstatus",
+        "state": {
+          "no_fix": "Kein GPS-Fix",
+          "gps_fix_2_d": "2D-GPS-Fix",
+          "gps_fix_3_d": "3D-GPS-Fix"
+        }
+      },
+      "vehicle_body_hood_isopen_normalized": {
+        "name": "Motorhaubenstatus",
+        "state": {
+          "closed": "Geschlossen",
+          "open": "Offen",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_isremoteenginestartdisclaimer_normalized": {
+        "name": "Vorkonditionierung – Hinweis zum Fernstart des Motors",
+        "state": {
+          "true": "Aktiviert",
+          "false": "Deaktiviert"
+        }
+      },
+      "vehicle_vehicle_preconditioning_activity_normalized": {
+        "name": "Vorkonditionierung – Status",
+        "state": {
+          "standby": "Bereitschaft",
+          "heating": "Heizen",
+          "cooling": "Kühlen",
+          "ventilation": "Lüften",
+          "inactive": "Inaktiv"
+        }
+      },
+      "vehicle_vehicle_preconditioning_error_normalized": {
+        "name": "Vorkonditionierung – Fehlergrund",
+        "state": {
+          "low_fuel": "Kraftstoffstand niedrig",
+          "low_battery": "Batterieladung niedrig",
+          "quota_exceeded": "Kontingent überschritten",
+          "heater_failure": "Heizungsfehler",
+          "component_failure": "Komponentenfehler",
+          "open_or_unlocked": "Offen oder entriegelt",
+          "ok": "OK",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_vehicle_preconditioning_isremoteenginerunning_normalized": {
+        "name": "Motor läuft",
+        "state": {
+          "true": "Motor läuft",
+          "false": "Motor läuft nicht"
+        }
+      },
+      "vehicle_vehicle_preconditioning_isremoteenginestartallowed_normalized": {
+        "name": "Fernstart des Motors zulässig",
+        "state": {
+          "invalid": "Ungültig",
+          "true": "Fernstart des Motors erlaubt",
+          "false": "Fernstart des Motors nicht erlaubt"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_status_comfortstate_normalized": {
+        "name": "Vorkonditionierung – Komfortstatus",
+        "state": {
+          "not_active": "Inaktiv",
+          "comfort_heating": "Komfortheizen",
+          "comfort_cooling": "Komfortkühlen",
+          "comfort_ventilation": "Komfortlüften",
+          "defrost": "Entfrosten",
+          "comfort_undefined": "Komfortmodus nicht definiert"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_status_isexteriormirrorheatingactive_normalized": {
+        "name": "Vorkonditionierung – Außenspiegelheizung aktiv",
+        "state": {
+          "true": "Heizung aktiv",
+          "false": "Heizung inaktiv"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_status_reardefrostactive_normalized": {
+        "name": "Vorkonditionierung – Heckscheibenheizung aktiv",
+        "state": {
+          "true": "Heizung aktiv",
+          "false": "Heizung inaktiv"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row1_driverside_cooling_normalized": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (vorne, Fahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row1_driverside_heating_normalized": {
+        "name": "Vorkonditionierung – Standardsitzheizung (vorne, Fahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row1_passengerside_cooling_normalized": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (vorne, Beifahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row1_passengerside_heating_normalized": {
+        "name": "Vorkonditionierung – Standardsitzheizung (vorne, Beifahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row2_driverside_cooling_normalized": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (hinten, Fahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row2_driverside_heating_normalized": {
+        "name": "Vorkonditionierung – Standardsitzheizung (hinten, Fahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row2_passengerside_cooling_normalized": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (hinten, Beifahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row2_passengerside_heating_normalized": {
+        "name": "Vorkonditionierung – Standardsitzheizung (hinten, Beifahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row3_driverside_cooling_normalized": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (3. Sitzreihe, Fahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row3_driverside_heating_normalized": {
+        "name": "Vorkonditionierung – Standardsitzheizung (3. Sitzreihe, Fahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row3_passengerside_cooling_normalized": {
+        "name": "Vorkonditionierung – Standardsitzbelüftung (3. Sitzreihe, Beifahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_seat_row3_passengerside_heating_normalized": {
+        "name": "Vorkonditionierung – Standardsitzheizung (3. Sitzreihe, Beifahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_defaultsettings_steeringwheel_heating_normalized": {
+        "name": "Vorkonditionierung – standardmäßige Lenkradheizung",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row1_driverside_cooling_normalized": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (vorne, Fahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row1_driverside_heating_normalized": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (vorne, Fahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row1_passengerside_cooling_normalized": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (vorne, Beifahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row1_passengerside_heating_normalized": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (vorne, Beifahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row2_driverside_cooling_normalized": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (hinten, Fahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row2_driverside_heating_normalized": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (hinten, Fahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row2_passengerside_cooling_normalized": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (hinten, Beifahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row2_passengerside_heating_normalized": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (hinten, Beifahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row3_driverside_cooling_normalized": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (3. Sitzreihe, Fahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row3_driverside_heating_normalized": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (3. Sitzreihe, Fahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row3_passengerside_cooling_normalized": {
+        "name": "Vorkonditionierung – direkte Sitzbelüftung (3. Sitzreihe, Beifahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_seat_row3_passengerside_heating_normalized": {
+        "name": "Vorkonditionierung – direkte Sitzheizung (3. Sitzreihe, Beifahrerseite)",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_preconditioning_configuration_directstartsettings_steeringwheel_heating_normalized": {
+        "name": "Vorkonditionierung – direkte Lenkradheizung",
+        "state": {
+          "off": "Aus",
+          "on": "Ein",
+          "automatic": "Automatisch",
+          "no_change": "Keine Änderung"
+        }
+      },
+      "vehicle_cabin_hvac_statusairpurification_normalized": {
+        "name": "Status der Luftreinigung",
+        "state": {
+          "unfiltered": "Ungefiltert",
+          "purifying_ongoing": "Reinigung läuft",
+          "purified": "Gereinigt",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_status_conditionbasedservices_brakefluid_normalized": {
+        "name": "Service – Bremsflüssigkeit",
+        "state": {
+          "ok": "OK",
+          "pending": "Ausstehend",
+          "overdue": "Überfällig"
+        }
+      },
+      "vehicle_status_conditionbasedservices_engineoil_normalized": {
+        "name": "Service – Motoröl",
+        "state": {
+          "ok": "OK",
+          "pending": "Ausstehend",
+          "overdue": "Überfällig"
+        }
+      },
+      "vehicle_status_conditionbasedservices_statutoryinspection_normalized": {
+        "name": "Service – Hauptuntersuchung",
+        "state": {
+          "ok": "OK",
+          "pending": "Ausstehend",
+          "overdue": "Überfällig"
+        }
+      },
+      "vehicle_status_conditionbasedservices_vehiclecheck_normalized": {
+        "name": "Fahrzeug-Check",
+        "state": {
+          "ok": "OK",
+          "pending": "Ausstehend",
+          "overdue": "Überfällig"
+        }
+      },
+      "vehicle_cabin_sunroof_overallstatus_normalized": {
+        "name": "Gesamtstatus des Schiebedachs",
+        "state": {
+          "invalid": "Ungültig",
+          "open": "Offen",
+          "open_tilt": "Gekippt geöffnet",
+          "intermediate_tilt": "Teilweise gekippt",
+          "closed": "Geschlossen"
+        }
+      },
+      "vehicle_cabin_sunroof_status_normalized": {
+        "name": "Schiebedachstatus",
+        "state": {
+          "closed": "Geschlossen",
+          "intermediate": "Teilweise geöffnet",
+          "open": "Offen",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_cabin_sunroof_tiltstatus_normalized": {
+        "name": "Kippstatus des Schiebedachs",
+        "state": {
+          "closed": "Geschlossen",
+          "intermediate": "Teilweise geöffnet",
+          "open": "Offen",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_channel_teleservice_status_normalized": {
+        "name": "TeleService – Verfügbarkeitsstatus",
+        "state": {
+          "pending": "Ausstehend",
+          "idle": "Inaktiv",
+          "successful": "Erfolgreich",
+          "error": "Fehler"
+        }
+      },
+      "vehicle_body_trunk_door_isopen_normalized": {
+        "name": "Heckklappe – Türstatus",
+        "state": {
+          "true": "Offen",
+          "false": "Geschlossen"
+        }
+      },
+      "vehicle_body_trunk_islocked_normalized": {
+        "name": "Verriegelungsstatus der Heckklappe",
+        "state": {
+          "true": "Verriegelt",
+          "false": "Entriegelt"
+        }
+      },
+      "vehicle_body_trunk_isopen_normalized": {
+        "name": "Heckklappenstatus",
+        "state": {
+          "closed": "Geschlossen",
+          "open": "Offen",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_body_trunk_left_door_isopen_normalized": {
+        "name": "Heckklappe – Türstatus (links)",
+        "state": {
+          "true": "Offen",
+          "false": "Geschlossen"
+        }
+      },
+      "vehicle_body_trunk_lower_door_isopen_normalized": {
+        "name": "Heckklappe – Türstatus (unten)",
+        "state": {
+          "true": "Offen",
+          "false": "Geschlossen"
+        }
+      },
+      "vehicle_body_trunk_right_door_isopen_normalized": {
+        "name": "Heckklappe – Türstatus (rechts)",
+        "state": {
+          "true": "Offen",
+          "false": "Geschlossen"
+        }
+      },
+      "vehicle_body_trunk_upper_door_isopen_normalized": {
+        "name": "Heckklappe – Türstatus (oben)",
+        "state": {
+          "true": "Offen",
+          "false": "Geschlossen"
+        }
+      },
+      "vehicle_body_trunk_window_isopen_normalized": {
+        "name": "Status der Heckklappenscheibe",
+        "state": {
+          "closed": "Geschlossen",
+          "open": "Offen",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_body_lights_isrunningon_normalized": {
+        "name": "Fahrzeug – Lichtstatus",
+        "state": {
+          "asn_is_false": "Aus",
+          "asn_is_true": "Ein",
+          "asn_is_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_drivetrain_engine_isactive_normalized": {
+        "name": "Fahrzeug – Zündungsstatus",
+        "state": {
+          "asn_is_false": "Aus",
+          "asn_is_true": "Ein",
+          "asn_is_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_drivetrain_engine_isignitionon_normalized": {
+        "name": "Fahrzeug – Motorstatus",
+        "state": {
+          "asn_is_false": "Aus",
+          "asn_is_true": "Ein",
+          "asn_is_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_vehicle_deepsleepmodeactive_normalized": {
+        "name": "Fahrzeug – Tiefschlafmodus",
+        "state": {
+          "true": "Tiefschlafmodus aktiv",
+          "false": "Tiefschlafmodus inaktiv"
+        }
+      },
+      "vehicle_cabin_infotainment_displayunit_distance_normalized": {
+        "name": "Fahrzeug – Anzeigeeinheit (Entfernung)",
+        "state": {
+          "km": "Kilometer",
+          "miles": "Meilen"
+        }
+      },
+      "vehicle_cabin_infotainment_hmi_distanceunit_normalized": {
+        "name": "Fahrzeug – Entfernungseinheit",
+        "state": {
+          "miles": "Meilen",
+          "kilometers": "Kilometer"
+        }
+      },
+      "vehicle_cabin_infotainment_ismobilephoneconnected_normalized": {
+        "name": "Fahrzeug – Mobiltelefon-Verbindungsstatus",
+        "state": {
+          "asn_is_false": "Nicht verbunden",
+          "asn_is_true": "Verbunden",
+          "asn_is_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_channel_ista_obfcm_lasttransmissionstatus_normalized": {
+        "name": "Status der letzten OBFCM-Übertragung",
+        "state": {
+          "ok": "OK",
+          "ecu_communication_error": "Kommunikationsfehler des Steuergeräts",
+          "vehicle_manipulation_detected": "Manipulation am Fahrzeug erkannt",
+          "manufacturer_excluded": "Hersteller ausgeschlossen"
+        }
+      },
+      "vehicle_sim_status_normalized": {
+        "name": "Fahrzeug – SIM-Aktivierungsstatus",
+        "state": {
+          "true": "Aktiviert",
+          "false": "Deaktiviert"
+        }
+      },
+      "vehicle_vehicle_timesetting_normalized": {
+        "name": "Fahrzeug – Zeitzoneneinstellung",
+        "state": {
+          "wintertime": "Winterzeit",
+          "summertime": "Sommerzeit",
+          "utc": "UTC",
+          "manual": "Manuell",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_cabin_window_row1_driver_status_normalized": {
+        "name": "Fensterstatus (vorne, Fahrerseite)",
+        "state": {
+          "closed": "Geschlossen",
+          "intermediate": "Teilweise geöffnet",
+          "open": "Offen",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_cabin_window_row1_passenger_status_normalized": {
+        "name": "Fensterstatus (vorne, Beifahrerseite)",
+        "state": {
+          "closed": "Geschlossen",
+          "intermediate": "Teilweise geöffnet",
+          "open": "Offen",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_cabin_window_row2_driver_status_normalized": {
+        "name": "Fensterstatus (hinten, Fahrerseite)",
+        "state": {
+          "closed": "Geschlossen",
+          "intermediate": "Teilweise geöffnet",
+          "open": "Offen",
+          "invalid": "Ungültig"
+        }
+      },
+      "vehicle_cabin_window_row2_passenger_status_normalized": {
+        "name": "Fensterstatus (hinten, Beifahrerseite)",
+        "state": {
+          "closed": "Geschlossen",
+          "intermediate": "Teilweise geöffnet",
+          "open": "Offen",
+          "invalid": "Ungültig"
+        }
+      },
+      "diagnostics_vehicle_metadata_normalized": {
+        "name": "Fahrzeugdaten",
+        "state": {
+          "available": "Verfügbar",
+          "status_unavailable": "Nicht verfügbar"
+        }
+      },
+      "connection_status_normalized": {
+        "name": "Stream-Verbindungsstatus",
+        "state": {
+          "connecting": "Verbindung wird hergestellt",
+          "connected": "Verbunden",
+          "disconnected": "Getrennt"
+        }
+      },
+      "vehicle_powertrain_electric_battery_charging_authenticationstatus_normalized": {
+        "name": "Hochvoltbatterie – Ladeauthentifizierungsstatus",
+        "state": {
+          "not_started": "Nicht gestartet",
+          "started_eim": "EIM gestartet",
+          "started_pnc": "Plug & Charge gestartet",
+          "started_plc_eim": "PLC-EIM gestartet",
+          "done_eim": "EIM abgeschlossen",
+          "done_plc_eim": "PLC-EIM abgeschlossen",
+          "done_pnc": "Plug & Charge abgeschlossen",
+          "failed_plc_eim": "PLC-EIM fehlgeschlagen",
+          "failed_pnc": "Plug & Charge fehlgeschlagen",
+          "status_unknown": "Unbekannt"
+        }
+      },
+      "vehicle_drivetrain_electricengine_charging_profile_mode_normalized": {
+        "name": "Laden – Ladeprofil",
+        "state": {
+          "immediate_charging": "Sofortladen"
+        }
+      },
+      "vehicle_cabin_door_status_normalized": {
+        "name": "Türstatus gesamt",
+        "state": {
+          "secured": "Gesichert"
+        }
       }
     },
     "binary_sensor": {
